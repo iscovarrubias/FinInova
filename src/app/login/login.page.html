@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true">
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+  </div>
+  <ion-card-content>
+    <ion-card-title>INICIAR SESIÓN</ion-card-title>
+
+    <ion-item>
+      <ion-input
+        labelPlacement="floating"
+        label="Email"
+        type="email"
+        placeholder="email@ejemplo.com"
+        [(ngModel)]="user.email"
+      ></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input
+        labelPlacement="floating"
+        label="Contraseña"
+        type="password"
+        [(ngModel)]="user.password"
+      ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" (click)="iniciarSesion()">INICIAR SESIÓN</ion-button>
+  </ion-card-content>
+
+  <div class="registro">
+    <p>¿No tienes cuenta?</p>
+    <ion-button expand="block" (click)="irARegistro()">Regístrate</ion-button>
+  </div>
+</ion-content>

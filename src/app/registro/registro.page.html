@@ -1,0 +1,66 @@
+<ion-content [fullscreen]="true">
+  <div class="logo-container">
+    <img src="assets/logo.png" alt="Logo" class="logo" />
+  </div>
+  <ion-card-content>
+    <ion-card-title>CREAR UNA CUENTA</ion-card-title>
+      <ion-item>
+        <ion-input
+          labelPlacement="floating"
+          label="Nombre"
+          type="text"
+          placeholder="Nombre"
+          [(ngModel)]="user.nombre"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          labelPlacement="floating"
+          label="Email"
+          type="email"
+          placeholder="email@ejemplo.com"
+          [(ngModel)]="user.email"
+        ></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-input
+          labelPlacement="floating"
+          label="Fecha De Nacimiento"
+          type="date"
+          placeholder="dd/mm/aaaa"
+          [(ngModel)]="user.fecha"
+        ></ion-input>
+      </ion-item>
+    
+      <ion-item>
+        <ion-label>Género</ion-label>
+        <ion-radio-group [(ngModel)]="user.genero">
+          <div class="radio-container">
+            <ion-item class="radio-item">
+              <ion-label class="radio-label">Masculino</ion-label>
+              <ion-radio slot="start" value="Masculino"></ion-radio>
+            </ion-item>
+            <ion-item class="radio-item">
+              <ion-label class="radio-label">Femenino</ion-label>
+              <ion-radio slot="start" value="Femenino"></ion-radio>
+            </ion-item>
+
+          </div>
+        </ion-radio-group>
+      </ion-item>
+      
+
+      <ion-item>
+        <ion-input
+          labelPlacement="floating"
+          label="Contraseña"
+          type="password"
+          value=""
+          [(ngModel)]="user.password"
+        ></ion-input>
+      </ion-item>
+      
+
+      <ion-button expand="block" (click)="registrar()" >REGISTRAR</ion-button>
+  </ion-card-content>
+</ion-content>
