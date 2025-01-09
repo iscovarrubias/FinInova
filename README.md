@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 "# FINEST" 
 
 npm install --legacy-peer-deps
@@ -34,3 +35,6 @@ rxjs                            7.8.1
 typescript                      5.4.5
 zone.js                         0.14.10
     
+=======
+# FinInova-App
+>>>>>>> dc509fc9c7218096528ed51bc945a5e0d7579b6f
