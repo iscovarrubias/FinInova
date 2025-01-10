@@ -23,6 +23,18 @@ export class UsuarioService {
   }
 
   loginUsuario(user: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, user, this.httpOptions); 
+    return this.http.get<any>(`${this.apiUrl}/usuario?email=${user.email}&password=${user.password}`, this.httpOptions); 
+  }
+
+  obtenerUsuario(email: string): Observable<any> {
+  return this.http.get(`${this.apiUrl}/usuario?correo=${email}`, this.httpOptions);  
+}
+
+  recuperarContraseña(email: string): Observable<any> {
+    return this.http.post(`${this.apiUrl}/recuperar`, { correo: email }, this.httpOptions);
+  }  
+
+  actualizarUsuario(id: number, usuario: any): Observable<any> {
+    return this.http.post<any>(`${this.apiUrl}/usuarios/${id}`, usuario);
   }
 }

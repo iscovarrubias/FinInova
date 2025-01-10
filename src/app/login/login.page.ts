@@ -24,19 +24,29 @@ export class LoginPage implements OnInit {
   iniciarSesion() {
     console.log('Iniciando sesión...');
     console.log(this.user.email);
-
+  
     this.usuarioService.loginUsuario(this.user).subscribe(
       (res) => {
         console.log(res);
+        
+        if (res && res.nombre) {
+          localStorage.setItem('userName', res.nombre); 
+        }
+  
+        this.router.navigate(['/home']);
       },
       (err) => {
         console.log(err);
       }
     );
   }
-
+  
   irARegistro() {
     this.router.navigate(['/registro']); 
+  }
+
+  irARecuperar() {
+    this.router.navigate(['/recuperar']); 
   }
 
 }
