@@ -37,6 +37,15 @@ export class HomePage implements OnInit {
           console.error('Error al obtener el usuario:', err);
         }
       );
+
+      this.usuarioService.obtenerPresupuestos(nombre).subscribe(
+        (presupuestos) => {
+          this.presupuestos = presupuestos;
+        },
+        (err) => {
+          console.error('Error al obtener los presupuestos:', err);
+        }
+      );
     } else {
       console.error('No se encontró el nombre del usuario.');
     }

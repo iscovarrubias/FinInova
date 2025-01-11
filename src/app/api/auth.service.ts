@@ -21,7 +21,6 @@ export class AuthService {
     return this.http.get<any>(`${this.apiUrl}/usuario?correo=${correo}&contraseña=${contraseña}`);
   }
   
-
   setCurrentUser(user: any) {
     this.currentUser = user;
     localStorage.setItem('currentUser', JSON.stringify(user));
