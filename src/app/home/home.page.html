@@ -1,0 +1,33 @@
+<ion-content>
+  <div class="date">
+    <p>{{ currentDate }}</p>
+  </div>
+
+  <ion-header>
+    <ion-title>
+      ¡BIENVENIDO, {{ user.nombre }}!
+    </ion-title>
+</ion-header>
+
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>RESUMEN</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="summary">
+          <div class="summary-item">
+            <p>Saldo</p>
+            <p>${{ user.saldo || 0 }}</p>
+          </div>
+          <div class="summary-item">
+            <p>Ingreso</p>
+            <p>${{ user.ingreso || 0 }}</p>
+          </div>
+          <div class="summary-item">
+            <p>Gastos</p>
+            <p>${{ user.gastos || 0 }}</p>
+          </div>      
+        </div>
+      </ion-card-content>
+    </ion-card>
+
