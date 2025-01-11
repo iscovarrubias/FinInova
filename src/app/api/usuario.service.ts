@@ -24,7 +24,7 @@ export class UsuarioService {
 
   loginUsuario(user: any): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/usuario?correo=${user.email}&contraseña=${user.password}`, this.httpOptions);
-  }  
+  }
 
   obtenerUsuario(correo: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/usuario?correo=${correo}`, this.httpOptions);  

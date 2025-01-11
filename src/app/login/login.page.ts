@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { UsuarioService } from '../api/usuario.service';
+import { AuthService } from '../api/auth.service';  
 import { Router } from '@angular/router'; 
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-login',
@@ -15,8 +16,9 @@ export class LoginPage implements OnInit {
   };
 
   constructor(
-    private usuarioService: UsuarioService,
-    private router: Router
+    private authService: AuthService, 
+    private router: Router,
+    private toastController: ToastController 
   ) { }
 
   ngOnInit() { }
@@ -24,25 +26,34 @@ export class LoginPage implements OnInit {
   iniciarSesion() {
     console.log('Iniciando sesión...');
     console.log(this.user.email);
-    
-    this.usuarioService.loginUsuario(this.user).subscribe(
-      (res) => {
-        console.log(res); 
-        
-        if (res && res.nombre) {
-          localStorage.setItem('userName', res.nombre); 
+
+    this.authService.login(this.user.email, this.user.password).subscribe(  
+      (res: any) => {  
+        console.log(res);
+
+        if (res && res.length > 0 && res[0].nombre) {
+          localStorage.setItem('userName', res[0].nombre);
+          this.router.navigate(['/home']);  
+        } else {
+          this.presentToast('Credenciales incorrectas. Intenta nuevamente.', 'warning');
         }
-    
-        this.router.navigate(['/home']);
       },
-      (err) => {
-        console.log(err);
+      (err: any) => {  
+        console.log('Error:', err);
+        this.presentToast('Error al iniciar sesión. Por favor, intenta nuevamente.', 'warning');
       }
     );
   }
-  
 
-  
+  async presentToast(message: string, color: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 2000,
+      color: color
+    });
+    toast.present();
+  }
+
   irARegistro() {
     this.router.navigate(['/registro']); 
   }
@@ -50,5 +61,4 @@ export class LoginPage implements OnInit {
   irARecuperar() {
     this.router.navigate(['/recuperar']); 
   }
-
 }
