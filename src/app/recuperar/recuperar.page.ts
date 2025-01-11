@@ -25,8 +25,7 @@ export class RecuperarPage {
       await toast.present();
       return;
     }
-
-<<<<<<< HEAD
+    
     this.usuarioService.verificarCorreo(this.email).subscribe(
       async (res) => {
         if (res && res.length > 0) {
@@ -48,20 +47,6 @@ export class RecuperarPage {
       async (err) => {
         const toast = await this.toastController.create({
           message: err.error.message || 'Error',
-=======
-    this.usuarioService.recuperarContraseña(this.email).subscribe(
-      async (res) => {
-        const toast = await this.toastController.create({
-          message: res.message,
-          duration: 2000,
-          color: 'success',
-        });
-        await toast.present();
-      },
-      async (err) => {
-        const toast = await this.toastController.create({
-          message: err.error.message || 'Error al recuperar la contraseña.',
->>>>>>> 38098d935596176656d529e85e159e1d4653e781
           duration: 2000,
           color: 'danger',
         });

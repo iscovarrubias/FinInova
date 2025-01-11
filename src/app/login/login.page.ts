@@ -24,15 +24,15 @@ export class LoginPage implements OnInit {
   iniciarSesion() {
     console.log('Iniciando sesión...');
     console.log(this.user.email);
-  
+    
     this.usuarioService.loginUsuario(this.user).subscribe(
       (res) => {
-        console.log(res);
+        console.log(res); 
         
         if (res && res.nombre) {
           localStorage.setItem('userName', res.nombre); 
         }
-  
+    
         this.router.navigate(['/home']);
       },
       (err) => {
@@ -40,6 +40,8 @@ export class LoginPage implements OnInit {
       }
     );
   }
+  
+
   
   irARegistro() {
     this.router.navigate(['/registro']); 

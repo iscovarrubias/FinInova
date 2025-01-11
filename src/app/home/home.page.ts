@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../api/usuario.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,20 @@ export class HomePage implements OnInit {
 
   user: any = { ingreso: 0, gastos: 0, saldo: 0 };
   currentDate!: string;
+  presupuestos: any[] = [];
+  userName: string = '';  
 
-  constructor(private usuarioService: UsuarioService) { }
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
 
   ngOnInit() {
     const date = new Date();
     this.currentDate = date.toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
 
+    this.userName = localStorage.getItem('userName') || '';
+    console.log('Nombre de usuario:', this.userName);
+  }
+
+  ionViewWillEnter() {
     const nombre = localStorage.getItem('userName');
 
     if (nombre) {
@@ -37,5 +45,4 @@ export class HomePage implements OnInit {
   calcularSaldo() {
     this.user.saldo = this.user.ingreso - this.user.gastos;
   }
- }
-
+}

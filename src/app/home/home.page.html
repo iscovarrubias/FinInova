@@ -1,45 +1,55 @@
-<<<<<<< HEAD
 <ion-content>
   <div class="date">
     <p>{{ currentDate }}</p>
   </div>
 
   <ion-header>
-=======
-<ion-header>
->>>>>>> 38098d935596176656d529e85e159e1d4653e781
     <ion-title>
-      ¡BIENVENIDO, {{ user.nombre }}!
+      ¡Bienvenido/a, {{ userName }}!
     </ion-title>
-</ion-header>
+  </ion-header>
 
-<<<<<<< HEAD
-=======
-<ion-content>
-  <div class="date">
-    <p>{{ currentDate }}</p>
-  </div>
-
->>>>>>> 38098d935596176656d529e85e159e1d4653e781
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>RESUMEN</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <div class="summary">
-          <div class="summary-item">
-            <p>Saldo</p>
-            <p>${{ user.saldo || 0 }}</p>
-          </div>
-          <div class="summary-item">
-            <p>Ingreso</p>
-            <p>${{ user.ingreso || 0 }}</p>
-          </div>
-          <div class="summary-item">
-            <p>Gastos</p>
-            <p>${{ user.gastos || 0 }}</p>
-          </div>      
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>RESUMEN</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="summary">
+        <div class="summary-item">
+          <p>Saldo</p>
+          <p>${{ user.saldo || 0 }}</p>
         </div>
-      </ion-card-content>
-    </ion-card>
+        <div class="summary-item">
+          <p>Ingreso</p>
+          <p>${{ user.ingreso || 0 }}</p>
+        </div>
+        <div class="summary-item">
+          <p>Gastos</p>
+          <p>${{ user.gastos || 0 }}</p>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
 
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>PRESUPUESTOS</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="presupuestos.length > 0; else noPresupuestos">
+        <ion-list>
+          <ion-item *ngFor="let presupuesto of presupuestos">
+            {{ presupuesto.nombre }} ({{ presupuesto.fechaInicio }} - {{ presupuesto.fechaCorte }})
+          </ion-item>
+        </ion-list>
+      </div>
+      <ng-template #noPresupuestos>
+        <p>No tienes presupuestos registrados.</p>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block">
+    CREAR PRESUPUESTO
+  </ion-button>
+</ion-content>

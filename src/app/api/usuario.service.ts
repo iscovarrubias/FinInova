@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-// usuario.service.ts
-=======
->>>>>>> 38098d935596176656d529e85e159e1d4653e781
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -27,12 +23,11 @@ export class UsuarioService {
   }
 
   loginUsuario(user: any): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/usuario?email=${user.email}&password=${user.password}`, this.httpOptions); 
-  }
+    return this.http.get<any>(`${this.apiUrl}/usuario?correo=${user.email}&contraseña=${user.password}`, this.httpOptions);
+  }  
 
-  obtenerUsuario(email: string): Observable<any> {
-<<<<<<< HEAD
-    return this.http.get(`${this.apiUrl}/usuario?correo=${email}`, this.httpOptions);  
+  obtenerUsuario(correo: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/usuario?correo=${correo}`, this.httpOptions);  
   }
 
   recuperarContraseña(email: string): Observable<any> {
@@ -41,15 +36,12 @@ export class UsuarioService {
   
   verificarCorreo(email: string): Observable<any> {
     return this.http.get(`${this.apiUrl}/usuario?correo=${email}`, this.httpOptions);
-=======
-  return this.http.get(`${this.apiUrl}/usuario?correo=${email}`, this.httpOptions);  
-}
-
-  recuperarContraseña(email: string): Observable<any> {
-    return this.http.post(`${this.apiUrl}/recuperar`, { correo: email }, this.httpOptions);
->>>>>>> 38098d935596176656d529e85e159e1d4653e781
   }  
 
+  crearPresupuesto(userId: string, presupuesto: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}/usuarios/${userId}`, presupuesto, this.httpOptions);
+  }
+  
   actualizarUsuario(id: number, usuario: any): Observable<any> {
     return this.http.post<any>(`${this.apiUrl}/usuarios/${id}`, usuario);
   }
