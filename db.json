@@ -27,10 +27,25 @@
     {
       "id": "8a37",
       "nombre": "a",
+<<<<<<< HEAD
       "email": "a@gmail.com",
       "password": "a",
       "fecha": "2022-12-29",
       "genero": "Femenino"
+=======
+      "correo": "a@gmail.com",
+      "contraseña": "a",
+      "fecha": "2022-12-29",
+      "genero": "Femenino"
+    },
+    {
+      "id": "9749",
+      "nombre": "a",
+      "email": "popi@gmail.com",
+      "password": "po",
+      "fecha": "2004-02-21",
+      "genero": "Masculino"
+>>>>>>> 2cfa66f (Arreglitos)
     }
   ],
   "presupuestos": [
