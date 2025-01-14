@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private apiUrl = 'https://189facc5-7642-4b17-a036-62e7c347b0a7-00-19wkpsd6w9uxl.picard.replit.dev';
+  private apiUrl = 'http://localhost:3000';
   private currentUser: any = null;
 
   constructor(private http: HttpClient, private router: Router) {
@@ -20,13 +20,19 @@ export class AuthService {
   login(correo: string, contraseña: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/usuario?correo=${correo}&contraseña=${contraseña}`);
   }
-  
+
   setCurrentUser(user: any) {
     this.currentUser = user;
     localStorage.setItem('currentUser', JSON.stringify(user));
   }
 
   getCurrentUser() {
+    if (!this.currentUser) {
+      const user = localStorage.getItem('currentUser');
+      if (user) {
+        this.currentUser = JSON.parse(user);
+      }
+    }
     return this.currentUser;
   }
 
@@ -38,5 +44,11 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     return this.currentUser !== null;
+  }
+
+  ensureAuthenticated(): void {
+    if (!this.isAuthenticated()) {
+      this.router.navigate(['/login']);
+    }
   }
 }

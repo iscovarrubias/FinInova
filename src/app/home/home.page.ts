@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../api/usuario.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../api/auth.service';
+import { MenuController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-home',
@@ -14,7 +16,12 @@ export class HomePage implements OnInit {
   presupuestos: any[] = [];
   userName: string = '';  
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  constructor(
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private authService: AuthService,
+    private menuController: MenuController  
+  ) { }
 
   ngOnInit() {
     const date = new Date();
@@ -26,32 +33,42 @@ export class HomePage implements OnInit {
 
   ionViewWillEnter() {
     const nombre = localStorage.getItem('userName');
-
-    if (nombre) {
-      this.usuarioService.obtenerUsuario(nombre).subscribe(
-        (res) => {
-          this.user = res;
-          this.calcularSaldo();
-        },
-        (err) => {
-          console.error('Error al obtener el usuario:', err);
-        }
-      );
-
-      this.usuarioService.obtenerPresupuestos(nombre).subscribe(
-        (presupuestos) => {
-          this.presupuestos = presupuestos;
-        },
-        (err) => {
-          console.error('Error al obtener los presupuestos:', err);
-        }
-      );
-    } else {
-      console.error('No se encontró el nombre del usuario.');
+    
+    if (!nombre) {
+      this.router.navigate(['/login']); 
+      return;
     }
+
+    this.usuarioService.obtenerUsuario(nombre).subscribe(
+      (res) => {
+        this.user = res;
+        this.calcularSaldo();
+      },
+      (err) => {
+        console.error('Error al obtener el usuario:', err);
+      }
+    );
+    
+    this.usuarioService.obtenerPresupuestos(nombre).subscribe(
+      (presupuestos) => {
+        this.presupuestos = presupuestos;
+      },
+      (err) => {
+        console.error('Error al obtener los presupuestos:', err);
+      }
+    );
   }
 
   calcularSaldo() {
     this.user.saldo = this.user.ingreso - this.user.gastos;
+  }
+
+  cerrarSesion() {
+    this.authService.logout(); 
+    this.menuController.close();  
+  }
+
+  toggleMenu() {
+    this.menuController.toggle(); 
   }
 }

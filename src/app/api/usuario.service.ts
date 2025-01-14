@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class UsuarioService {
 
-  apiUrl = 'https://189facc5-7642-4b17-a036-62e7c347b0a7-00-19wkpsd6w9uxl.picard.replit.dev';
+  apiUrl = 'http://localhost:3000';  
 
   httpOptions = {
     headers: new HttpHeaders({
@@ -35,18 +35,18 @@ export class UsuarioService {
   }
   
   verificarCorreo(email: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/usuario?correo=${email}`, this.httpOptions);
+    return this.http.get(`${this.apiUrl}/usuario?correo=${email}`, this.httpOptions); 
   }  
 
   crearPresupuesto(userId: string, presupuesto: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/presupuestos`, presupuesto, this.httpOptions);
   }  
 
-  obtenerPresupuestos(correo: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/presupuestos?correo=${correo}`, this.httpOptions);
+  obtenerPresupuestos(id: string): Observable<any> {
+    return this.http.get(`${this.apiUrl}/presupuestos?usuarioId=${id}`);
   }
   
   actualizarUsuario(id: number, usuario: any): Observable<any> {
-    return this.http.post<any>(`${this.apiUrl}/usuarios/${id}`, usuario);
+    return this.http.put<any>(`${this.apiUrl}/usuarios/${id}`, usuario, this.httpOptions);
   }
 }

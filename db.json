@@ -1,0 +1,78 @@
+{
+  "usuario": [
+    {
+      "id": "1",
+      "nombre": "ejemplo1",
+      "correo": "ex1@gmail.com",
+      "contraseña": "password123",
+      "fecha": "2020-01-01",
+      "genero": "masculino"
+    },
+    {
+      "id": "2",
+      "nombre": "ejemplo2",
+      "correo": "ex2@gmail.com",
+      "contraseña": "password123w",
+      "fecha": "2025-01-01",
+      "genero": "femenino"
+    },
+    {
+      "id": "4eb9",
+      "nombre": "Isabella",
+      "correo": "isabella@gmail.com",
+      "contraseña": "Isabella",
+      "fecha": "2003-11-29",
+      "genero": "femenino"
+    },
+    {
+      "id": "8a37",
+      "nombre": "a",
+      "email": "a@gmail.com",
+      "password": "a",
+      "fecha": "2022-12-29",
+      "genero": "Femenino"
+    }
+  ],
+  "presupuestos": [
+    {
+      "id": "1",
+      "nombre": "Presupuesto Mensual",
+      "fechaInicio": "2023-01-01",
+      "fechaCorte": "2023-12-31",
+      "usuarioId": "1"
+    },
+    {
+      "id": "2",
+      "nombre": "Presupuesto Anual",
+      "fechaInicio": "2023-01-01",
+      "fechaCorte": "2023-12-31",
+      "usuarioId": "2"
+    },
+    {
+      "id": "4eb9",
+      "nombre": "dffd",
+      "fechaInicio": "2025-01-01",
+      "fechaCorte": "2026-02-20",
+      "usuarioId": "4eb9"
+    },
+    {
+      "id": "8a37",
+      "nombre": "4",
+      "fechaInicio": "2002-02-02",
+      "fechaCorte": "2024-04-20",
+      "usuarioId": "8a37"
+    },
+    {
+      "id": "6294",
+      "nombre": "sd",
+      "fechaInicio": "2020-02-22",
+      "fechaCorte": "2029-02-22"
+    },
+    {
+      "id": "08b9",
+      "nombre": "aa",
+      "fechaInicio": "2024-11-29",
+      "fechaCorte": "2026-11-29"
+    }
+  ]
+}

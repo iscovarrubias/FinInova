@@ -24,23 +24,31 @@ export class LoginPage implements OnInit {
   ngOnInit() { }
 
   iniciarSesion() {
+    if (!this.user.email || !this.user.password) {
+      this.presentToast('Por favor ingresa tu correo y contraseña.', 'warning');
+      return;
+    }
+
     console.log('Iniciando sesión...');
     console.log(this.user.email);
 
-    this.authService.login(this.user.email, this.user.password).subscribe(  
-      (res: any) => {  
+    this.authService.login(this.user.email, this.user.password).subscribe(
+      (res: any) => {
         console.log(res);
-
-        if (res && res.length > 0 && res[0].nombre) {
+        if (res && res.length > 0 && res[0].correo === this.user.email && res[0].contraseña === this.user.password) {
           localStorage.setItem('userName', res[0].nombre);
-          this.router.navigate(['/home']);  
+          this.router.navigate(['/home']);
         } else {
           this.presentToast('Credenciales incorrectas. Intenta nuevamente.', 'warning');
+          this.user.email = '';
+          this.user.password = '';
         }
       },
-      (err: any) => {  
+      (err: any) => {
         console.log('Error:', err);
         this.presentToast('Error al iniciar sesión. Por favor, intenta nuevamente.', 'warning');
+        this.user.email = '';
+        this.user.password = '';
       }
     );
   }
