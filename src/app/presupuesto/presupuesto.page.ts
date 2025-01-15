@@ -10,6 +10,7 @@ import { AuthService } from '../api/auth.service';
   templateUrl: './presupuesto.page.html',
   styleUrls: ['./presupuesto.page.scss'],
 })
+
 export class PresupuestoPage implements OnInit {
 
   nuevoPresupuesto: any = {
@@ -86,7 +87,7 @@ export class PresupuestoPage implements OnInit {
       async (err: any) => {
         console.error('Error al obtener el usuario:', err);
         const toast = await this.toastController.create({
-          message: 'El usuario no existe. Por favor, regístralo primero.',
+          message: 'El usuario no existe.',
           duration: 2000,
           color: 'danger',
         });

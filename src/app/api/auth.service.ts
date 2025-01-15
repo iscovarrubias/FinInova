@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
-import { tap } from 'rxjs/operators';  
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -37,8 +37,6 @@ export class AuthService {
     console.log('Usuario almacenado:', this.currentUser);
   }
   
-  
-
   getCurrentUser() {
     if (!this.currentUser) {
       const user = localStorage.getItem('currentUser');
@@ -49,7 +47,6 @@ export class AuthService {
     console.log('Usuario actual:', this.currentUser);  
     return this.currentUser;
   }
-  
 
   logout() {
     this.currentUser = null;
@@ -67,3 +64,4 @@ export class AuthService {
     }
   }
 }
+

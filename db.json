@@ -75,6 +75,13 @@
       "fechaInicio": "2025-03-23",
       "fechaCorte": "2026-01-21",
       "correo": "isabella@gmail.com"
+    },
+    {
+      "id": "1c51",
+      "nombre": "Pañales",
+      "fechaInicio": "2024-09-21",
+      "fechaCorte": "2025-10-22",
+      "correo": "a@gmail.com"
     }
   ]
 }

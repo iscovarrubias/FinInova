@@ -56,11 +56,10 @@ export class UsuarioService {
     return this.http.post(`${this.apiUrl}/presupuestos`, presupuestoConCorreo, this.httpOptions);
   }
    
-
   obtenerPresupuestos(correo: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}/presupuestos?correo=${correo}`);
+    return this.http.get<any[]>(`${this.apiUrl}/presupuestos?correo=${correo}`, this.httpOptions);
   }
-
+  
   actualizarUsuario(id: number, usuario: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/usuarios/${id}`, usuario, this.httpOptions);
   }
