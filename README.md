@@ -1,6 +1,6 @@
-Intrucciones:
+⸜❤︎⸝ Intrucciones:
 
-Pasos para ejecutar:
+➤ Pasos para ejecutar:
 
 1-npm install 
 
@@ -10,7 +10,7 @@ Pasos para ejecutar:
 
 4-ionic serve
 
-Versiones:
+➤ Versiones:
 
 Node: v22.12.0
 
