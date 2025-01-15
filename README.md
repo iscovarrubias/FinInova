@@ -1,10 +1,16 @@
-Intrucciones:
+⸜❤︎⸝ Intrucciones:
 
-Pasos para ejecutar:
+➤ Pasos para ejecutar:
 
-1-npm install 2-ionic serve
+1-npm install 
 
-Versiones:
+2-npm install json-server
+
+3-npx json-server db.json
+
+4-ionic serve
+
+➤ Versiones:
 
 Node: v22.12.0
 
