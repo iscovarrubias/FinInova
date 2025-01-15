@@ -64,7 +64,7 @@ ion-title {
   background-color: #f4f4f9;
   color: #333;
   font-weight: bold;
-  padding: 10px;
+  padding: 5px; 
   text-align: center;
   border-radius: 5px;
 }
@@ -72,11 +72,12 @@ ion-title {
 .table-item {
   background-color: #fafafa;
   color: #555;
-  padding: 8px;
+  padding: 5px;
   text-align: center;
   border-bottom: 1px solid #e0e0e0;
   border-radius: 5px;
 }
+
 
 ion-row:nth-child(even) .table-item {
   background-color: #f0f8ff;

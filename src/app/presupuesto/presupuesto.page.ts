@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { UsuarioService } from '../api/usuario.service';  
-import { AuthService } from '../api/auth.service'; 
+import { AuthService } from '../api/auth.service';  
 
 @Component({
   selector: 'app-presupuesto',
@@ -13,12 +13,15 @@ import { AuthService } from '../api/auth.service';
 
 export class PresupuestoPage implements OnInit {
 
-  nuevoPresupuesto: any = {
+  nuevoPresupuesto: any = {  
     nombre: '',
     fechaInicio: '',
     fechaCorte: '',
     correo: '', 
+    categorias: []  
   };
+
+  categorias: any[] = []; 
 
   private apiUrl = 'http://localhost:3000';
 
@@ -30,7 +33,21 @@ export class PresupuestoPage implements OnInit {
     private authService: AuthService  
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.cargarCategorias(); 
+  }
+
+  cargarCategorias() {
+    this.usuarioService.obtenerCategorias().subscribe(
+      (categorias: any[]) => {
+        this.categorias = categorias;
+        console.log('Categorías cargadas:', this.categorias);
+      },
+      (error) => {
+        console.error('Error al obtener categorías:', error);
+      }
+    );
+  }
 
   async crearPresupuesto() {
     const usuario = this.authService.getCurrentUser(); 
@@ -102,6 +119,7 @@ export class PresupuestoPage implements OnInit {
       fechaInicio: '',
       fechaCorte: '',
       correo: '',
+      categorias: [],  
     };
   }
 }
