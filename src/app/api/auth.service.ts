@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';  
 
 @Injectable({
   providedIn: 'root',
@@ -18,13 +19,25 @@ export class AuthService {
   }
 
   login(correo: string, contraseña: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/usuario?correo=${correo}&contraseña=${contraseña}`);
+    return this.http.get<any>(`${this.apiUrl}/usuario?correo=${correo}&contraseña=${contraseña}`).pipe(
+      tap((usuario) => {
+        if (usuario && usuario.length > 0) {  
+          this.setCurrentUser(usuario[0]);
+          console.log('Usuario logueado:', usuario[0]);  
+        } else {
+          console.log('Usuario no encontrado');
+        }
+      })
+    );
   }
-
+  
   setCurrentUser(user: any) {
     this.currentUser = user;
-    localStorage.setItem('currentUser', JSON.stringify(user));
+    localStorage.setItem('currentUser', JSON.stringify(user));  
+    console.log('Usuario almacenado:', this.currentUser);
   }
+  
+  
 
   getCurrentUser() {
     if (!this.currentUser) {
@@ -33,8 +46,10 @@ export class AuthService {
         this.currentUser = JSON.parse(user);
       }
     }
+    console.log('Usuario actual:', this.currentUser);  
     return this.currentUser;
   }
+  
 
   logout() {
     this.currentUser = null;
