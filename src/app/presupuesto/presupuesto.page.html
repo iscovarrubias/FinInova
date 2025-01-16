@@ -1,0 +1,44 @@
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>CREAR UN PRESUPUESTO</ion-card-title>
+
+      <ion-item>
+        <ion-label position="stacked">Nombre del Presupuesto</ion-label>
+        <ion-input [(ngModel)]="nuevoPresupuesto.nombre" placeholder="Ej: Presupuesto Mensual"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de Inicio</ion-label>
+        <ion-input
+          type="date"
+          labelPlacement="floating"
+          [(ngModel)]="nuevoPresupuesto.fechaInicio"
+          placeholder="dd/mm/aaaa"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha de Corte</ion-label>
+        <ion-input
+          type="date"
+          labelPlacement="floating"
+          [(ngModel)]="nuevoPresupuesto.fechaCorte"
+          placeholder="dd/mm/aaaa"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Categoría</ion-label>
+        <ion-select [(ngModel)]="nuevoPresupuesto.categoria" placeholder="Selecciona una categoría">
+          <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="crearPresupuesto()">
+    CREAR
+  </ion-button>
+</ion-content>

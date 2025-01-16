@@ -1,0 +1,34 @@
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>CREAR UN GASTO</ion-card-title>
+
+      <ion-item>
+        <ion-label position="stacked">Monto del Gasto</ion-label>
+        <ion-input [(ngModel)]="nuevoGasto.monto" type="number" placeholder="Ej: 1000" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha del Gasto</ion-label>
+        <ion-input
+          type="date"
+          labelPlacement="floating"
+          [(ngModel)]="nuevoGasto.fecha"
+          placeholder="dd/mm/aaaa"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Categoría</ion-label>
+        <ion-select [(ngModel)]="nuevoGasto.categoria" placeholder="Selecciona una categoría" required>
+          <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="crearGasto()">
+    CREAR
+  </ion-button>
+</ion-content>

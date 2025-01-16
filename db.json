@@ -1,0 +1,144 @@
+{
+  "usuario": [
+    {
+      "id": "1",
+      "nombre": "ejemplo1",
+      "correo": "ex1@gmail.com",
+      "contraseña": "password123",
+      "fecha": "2020-01-01",
+      "genero": "masculino"
+    },
+    {
+      "id": "2",
+      "nombre": "ejemplo2",
+      "correo": "ex2@gmail.com",
+      "contraseña": "password123w",
+      "fecha": "2025-01-01",
+      "genero": "femenino"
+    },
+    {
+      "id": "4eb9",
+      "nombre": "Isabella",
+      "correo": "isabella@gmail.com",
+      "contraseña": "Isabella",
+      "fecha": "2003-11-29",
+      "genero": "femenino"
+    },
+    {
+      "id": "8a37",
+      "nombre": "a",
+      "correo": "a@gmail.com",
+      "contraseña": "a",
+      "fecha": "2022-12-29",
+      "genero": "Femenino"
+    }
+  ],
+  "presupuestos": [
+    {
+      "id": "1",
+      "nombre": "Presupuesto Mensual",
+      "fechaInicio": "2023-01-01",
+      "fechaCorte": "2023-12-31",
+      "correo": "ex1@gmail.com",
+      "categorias": [
+        "1,2"
+      ]
+    },
+    {
+      "id": "e23d",
+      "nombre": "Pañales",
+      "fechaInicio": "2025-02-12",
+      "fechaCorte": "2026-04-13",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ]
+    },
+    {
+      "id": "98cd",
+      "nombre": "Super",
+      "fechaInicio": "2025-02-11",
+      "fechaCorte": "2026-09-11",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "1"
+      ]
+    },
+    {
+      "id": "b359",
+      "nombre": "Auto",
+      "fechaInicio": "2026-02-22",
+      "fechaCorte": "2027-02-22",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ]
+    },
+    {
+      "id": "5a31",
+      "nombre": "Internet",
+      "fechaInicio": "2025-11-30",
+      "fechaCorte": "2025-12-31",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ]
+    }
+  ],
+  "categorias": [
+    {
+      "id": "1",
+      "nombre": "Comida"
+    },
+    {
+      "id": "2",
+      "nombre": "Transporte"
+    },
+    {
+      "id": "3",
+      "nombre": "Casa"
+    },
+    {
+      "id": "4",
+      "nombre": "Salud"
+    },
+    {
+      "id": "5",
+      "nombre": "Entretenimiento"
+    }
+  ],
+  "gastos": [
+    {
+      "id": "g1",
+      "descripcion": "Compra supermercado",
+      "monto": 50000,
+      "fecha": "2025-01-01",
+      "correo": "ex1@gmail.com",
+      "categoriaId": "1"
+    },
+    {
+      "id": "g2",
+      "descripcion": "Pago de luz",
+      "monto": 20000,
+      "fecha": "2025-01-05",
+      "correo": "isabella@gmail.com",
+      "categoriaId": "3"
+    },
+    {
+      "id": "g3",
+      "descripcion": "Consulta médica",
+      "monto": 35000,
+      "fecha": "2025-01-10",
+      "correo": "ex1@gmail.com",
+      "categoriaId": "4"
+    },
+    {
+      "id": "g4",
+      "descripcion": "Cine",
+      "monto": 12000,
+      "fecha": "2025-01-12",
+      "correo": "isabella@gmail.com",
+      "categoriaId": "5"
+    }
+  ]
+}

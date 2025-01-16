@@ -1,0 +1,124 @@
+ion-header {
+  --background: #ffa2db;
+  --color: white;
+  font-size: 16px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  width: 250px;
+  height: auto;
+}
+
+ion-card-title {
+  color: #1c1c1c;
+  font-weight: bold;
+  font-size: 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+ion-content {
+  --background: #fff !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+ion-card-content {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  margin: auto;
+}
+
+ion-item {
+  --background: transparent;
+  --color: #333;
+  box-shadow: none;
+  margin-bottom: 20px;
+}
+
+ion-input {
+  --background: #f9f9f9;
+  --border-radius: 25px;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --color: #000000;
+}
+
+ion-input::part(input) {
+  color: #000000;
+}
+
+ion-input::part(placeholder) {
+  color: #ffa2db;
+}
+
+ion-button {
+  --background: #ff89d2;
+  --color: white;
+  --border-radius: 25px;
+  margin-top: 20px;
+  width: 100%;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+ion-button:hover {
+  --background: #ff58ab;
+}
+
+
+.registro {
+  display: flex;
+  flex-direction: column; 
+  justify-content: center; 
+  align-items: center; 
+  margin-top: 20px;
+}
+
+.registro p {
+  font-size: 15px;
+  color: #555;
+}
+
+.registro ion-button {
+  --background: #ff89d2;
+  --color: white;
+  --border-radius: 25px;
+  width: 150px;
+  height: 50px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.registro ion-button:hover {
+  --background: #ff58ab;
+}
+
+.forgot-password {
+  text-align: right;
+  margin-bottom: 20px;
+}
+
+.forgot-password a {
+  color: #ff89d2;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password a:hover {
+  text-decoration: underline;
+}
