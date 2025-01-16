@@ -1,4 +1,4 @@
-⸜❤︎⸝ Intrucciones:
+⸜❤︎⸝ Instrucciones:
 
 ➤ Pasos para ejecutar:
 
