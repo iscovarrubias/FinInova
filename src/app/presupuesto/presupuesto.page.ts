@@ -73,10 +73,9 @@ export class PresupuestoPage implements OnInit {
       return;
     }
   
-    // Validar si hay una categoría seleccionada y agregarla al array
     if (this.nuevoPresupuesto.categoria) {
       this.nuevoPresupuesto.categorias.push(this.nuevoPresupuesto.categoria);
-      delete this.nuevoPresupuesto.categoria; // Elimina el campo auxiliar para evitar duplicados
+      delete this.nuevoPresupuesto.categoria; 
     }
   
     this.usuarioService.obtenerUsuario(correo).subscribe(
