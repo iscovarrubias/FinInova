@@ -61,18 +61,21 @@ export class HomePage implements OnInit {
         console.log('Presupuestos obtenidos:', presupuestos);
 
 
-      this.presupuestos = presupuestos.map((presupuesto) => {
-      const categorias = Array.isArray(presupuesto.categorias) ? presupuesto.categorias : [presupuesto.categoria];
-
-      presupuesto.categoriaNombre = categorias
-      .map((id: number) => {
-      const categoria = this.categorias.find(c => c.id === id);
-      return categoria ? categoria.nombre : 'Sin Categoría';
-      })
-      .join(', ');
-
-       return presupuesto;
-      });
+        this.presupuestos = presupuestos.map((presupuesto) => {
+          const categorias = Array.isArray(presupuesto.categorias) && presupuesto.categorias.length > 0
+            ? presupuesto.categorias 
+            : [presupuesto.categoria]; 
+        
+          presupuesto.categoriaNombre = categorias
+            .map((id: number) => {
+              const categoria = this.categorias.find(c => c.id === id);
+              return categoria ? categoria.nombre : 'Sin Categoría';
+            })
+            .join(', '); 
+        
+          return presupuesto;
+        });
+        
 
       },
       (err) => {
