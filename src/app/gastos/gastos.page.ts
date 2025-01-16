@@ -13,7 +13,7 @@ import { AuthService } from '../api/auth.service';
 export class GastosPage implements OnInit {
 
   nuevoGasto: any = {  
-    descripcion: '',
+    nombre: '',
     monto: '',
     fecha: '',
     categoria: '',
@@ -52,6 +52,9 @@ export class GastosPage implements OnInit {
     const usuario = this.authService.getCurrentUser();
     const correo = usuario ? usuario.correo : this.nuevoGasto.correo;
   
+    // Depuración: Verifica que el correo es correcto
+    console.log('Correo obtenido:', correo);
+  
     if (!correo) {
       const toast = await this.toastController.create({
         message: 'Por favor, ingresa un correo válido.',
@@ -62,7 +65,13 @@ export class GastosPage implements OnInit {
       return;
     }
   
-    if (!this.nuevoGasto.descripcion || !this.nuevoGasto.monto || !this.nuevoGasto.fecha) {
+    // Depuración: Verifica que los campos están siendo llenados correctamente
+    console.log('Nombre del gasto:', this.nuevoGasto.nombre);
+    console.log('Monto:', this.nuevoGasto.monto);
+    console.log('Fecha:', this.nuevoGasto.fecha);
+  
+    // Verificación de campos obligatorios
+    if (!this.nuevoGasto.nombre || !this.nuevoGasto.monto || !this.nuevoGasto.fecha) {
       const toast = await this.toastController.create({
         message: 'Por favor, completa todos los campos.',
         duration: 2000,
@@ -72,6 +81,7 @@ export class GastosPage implements OnInit {
       return;
     }
   
+    // Crear gasto
     this.usuarioService.obtenerUsuario(correo).subscribe(
       async (usuario: any) => {
         this.usuarioService.crearGasto(usuario.id, this.nuevoGasto, correo).subscribe(
@@ -109,11 +119,11 @@ export class GastosPage implements OnInit {
   
   limpiarFormulario() {
     this.nuevoGasto = {
-      descripcion: '',
+      nombre: '',
       monto: '',
       fecha: '',
       categoria: '',
       correo: '',  
     };
   }
-}
+}  

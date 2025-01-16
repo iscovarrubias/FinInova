@@ -110,7 +110,7 @@
   "gastos": [
     {
       "id": "g1",
-      "descripcion": "Compra supermercado",
+      "nombre": "Compra supermercado",
       "monto": 50000,
       "fecha": "2025-01-01",
       "correo": "ex1@gmail.com",
@@ -118,7 +118,7 @@
     },
     {
       "id": "g2",
-      "descripcion": "Pago de luz",
+      "nombre": "Pago de luz",
       "monto": 20000,
       "fecha": "2025-01-05",
       "correo": "isabella@gmail.com",
@@ -126,7 +126,7 @@
     },
     {
       "id": "g3",
-      "descripcion": "Consulta médica",
+      "nombre": "Consulta médica",
       "monto": 35000,
       "fecha": "2025-01-10",
       "correo": "ex1@gmail.com",
@@ -134,11 +134,19 @@
     },
     {
       "id": "g4",
-      "descripcion": "Cine",
+      "nombre": "Cine",
       "monto": 12000,
       "fecha": "2025-01-12",
       "correo": "isabella@gmail.com",
       "categoriaId": "5"
+    },
+    {
+      "id": "244a",
+      "nombre": "Veterinario",
+      "monto": 50000,
+      "fecha": "2025-02-11",
+      "categoria": "4",
+      "correo": "isabella@gmail.com"
     }
   ]
 }

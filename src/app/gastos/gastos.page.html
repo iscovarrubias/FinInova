@@ -4,6 +4,11 @@
       <ion-card-title>CREAR UN GASTO</ion-card-title>
 
       <ion-item>
+        <ion-label position="floating">Nombre del Gasto</ion-label>
+        <ion-input [(ngModel)]="nuevoGasto.nombre" required></ion-input>
+      </ion-item>      
+
+      <ion-item>
         <ion-label position="stacked">Monto del Gasto</ion-label>
         <ion-input [(ngModel)]="nuevoGasto.monto" type="number" placeholder="Ej: 1000" required></ion-input>
       </ion-item>
