@@ -1,0 +1,141 @@
+{
+  "usuario": [
+    {
+      "id": "1",
+      "nombre": "ejemplo1",
+      "correo": "ex1@gmail.com",
+      "contraseña": "password123",
+      "fecha": "2020-01-01",
+      "genero": "masculino"
+    },
+    {
+      "id": "2",
+      "nombre": "ejemplo2",
+      "correo": "ex2@gmail.com",
+      "contraseña": "password123w",
+      "fecha": "2025-01-01",
+      "genero": "femenino"
+    },
+    {
+      "id": "4eb9",
+      "nombre": "Isabella",
+      "correo": "isabella@gmail.com",
+      "contraseña": "Isabella",
+      "fecha": "2003-11-29",
+      "genero": "femenino"
+    },
+    {
+      "id": "8a37",
+      "nombre": "a",
+      "correo": "a@gmail.com",
+      "contraseña": "a",
+      "fecha": "2022-12-29",
+      "genero": "Femenino"
+    }
+  ],
+  "presupuestos": [
+    {
+      "id": "1",
+      "nombre": "Presupuesto Mensual",
+      "fechaInicio": "2023-01-01",
+      "fechaCorte": "2023-12-31",
+      "correo": "ex1@gmail.com",
+      "categorias": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "f160",
+      "nombre": "a",
+      "fechaInicio": "2024-11-29",
+      "fechaCorte": "2026-01-21",
+      "correo": "",
+      "categorias": [
+        3
+      ]
+    },
+    {
+      "id": "8bd2",
+      "nombre": "aaaa",
+      "fechaInicio": "2025-11-29",
+      "fechaCorte": "2026-12-28",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        1,
+        4
+      ]
+    },
+    {
+      "id": "77ab",
+      "nombre": "www",
+      "fechaInicio": "2024-12-12",
+      "fechaCorte": "2026-02-10",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        5
+      ]
+    },
+    {
+      "id": "40fc",
+      "nombre": "aaaa",
+      "fechaInicio": "2022-11-29",
+      "fechaCorte": "2030-03-30",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        2
+      ]
+    },
+    {
+      "id": "b228",
+      "nombre": "aaaaaaaaaaaaa",
+      "fechaInicio": "2025-03-23",
+      "fechaCorte": "2026-01-21",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        3,
+        5
+      ]
+    },
+    {
+      "id": "1c51",
+      "nombre": "Pañales",
+      "fechaInicio": "2024-09-21",
+      "fechaCorte": "2025-10-22",
+      "correo": "a@gmail.com",
+      "categorias": [
+        4
+      ]
+    },
+    {
+      "id": "6437",
+      "nombre": "Arriendo 2",
+      "fechaInicio": "2024-11-29",
+      "fechaCorte": "2025-11-29",
+      "correo": "a@gmail.com",
+      "categoria": 3
+    }
+  ],
+  "categorias": [
+    {
+      "id": 1,
+      "nombre": "Comida"
+    },
+    {
+      "id": 2,
+      "nombre": "Transporte"
+    },
+    {
+      "id": 3,
+      "nombre": "Casa"
+    },
+    {
+      "id": 4,
+      "nombre": "Salud"
+    },
+    {
+      "id": 5,
+      "nombre": "Entretenimiento"
+    }
+  ]
+}
