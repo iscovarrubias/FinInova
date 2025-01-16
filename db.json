@@ -67,74 +67,53 @@
       ]
     },
     {
-      "id": "77ab",
-      "nombre": "www",
-      "fechaInicio": "2024-12-12",
-      "fechaCorte": "2026-02-10",
-      "correo": "isabella@gmail.com",
-      "categorias": [
-        5
-      ]
-    },
-    {
-      "id": "40fc",
-      "nombre": "aaaa",
-      "fechaInicio": "2022-11-29",
-      "fechaCorte": "2030-03-30",
-      "correo": "isabella@gmail.com",
-      "categorias": [
-        2
-      ]
-    },
-    {
-      "id": "b228",
-      "nombre": "aaaaaaaaaaaaa",
-      "fechaInicio": "2025-03-23",
-      "fechaCorte": "2026-01-21",
-      "correo": "isabella@gmail.com",
-      "categorias": [
-        3,
-        5
-      ]
-    },
-    {
-      "id": "1c51",
+      "id": "e23d",
       "nombre": "Pañales",
-      "fechaInicio": "2024-09-21",
-      "fechaCorte": "2025-10-22",
-      "correo": "a@gmail.com",
-      "categorias": [
-        4
-      ]
+      "fechaInicio": "2025-02-12",
+      "fechaCorte": "2026-04-13",
+      "correo": "isabella@gmail.com",
+      "categorias": [],
+      "categoria": "3"
     },
     {
-      "id": "6437",
-      "nombre": "Arriendo 2",
-      "fechaInicio": "2024-11-29",
-      "fechaCorte": "2025-11-29",
-      "correo": "a@gmail.com",
-      "categoria": 3
+      "id": "98cd",
+      "nombre": "Super",
+      "fechaInicio": "2025-02-11",
+      "fechaCorte": "2026-09-11",
+      "correo": "isabella@gmail.com",
+      "categorias": [],
+      "categoria": "1"
+    },
+    {
+      "id": "b359",
+      "nombre": "Auto",
+      "fechaInicio": "2026-02-22",
+      "fechaCorte": "2027-02-22",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ]
     }
   ],
   "categorias": [
     {
-      "id": 1,
+      "id": "1",
       "nombre": "Comida"
     },
     {
-      "id": 2,
+      "id": "2",
       "nombre": "Transporte"
     },
     {
-      "id": 3,
+      "id": "3",
       "nombre": "Casa"
     },
     {
-      "id": 4,
+      "id": "4",
       "nombre": "Salud"
     },
     {
-      "id": 5,
+      "id": "5",
       "nombre": "Entretenimiento"
     }
   ]
