@@ -114,7 +114,9 @@
       "monto": 50000,
       "fecha": "2025-01-01",
       "correo": "ex1@gmail.com",
-      "categoriaId": "1"
+      "categorias": [
+        "1"
+      ]
     },
     {
       "id": "g2",
@@ -122,7 +124,9 @@
       "monto": 20000,
       "fecha": "2025-01-05",
       "correo": "isabella@gmail.com",
-      "categoriaId": "3"
+      "categorias": [
+        "3"
+      ]
     },
     {
       "id": "g3",
@@ -130,7 +134,9 @@
       "monto": 35000,
       "fecha": "2025-01-10",
       "correo": "ex1@gmail.com",
-      "categoriaId": "4"
+      "categorias": [
+        "4"
+      ]
     },
     {
       "id": "g4",
@@ -138,15 +144,65 @@
       "monto": 12000,
       "fecha": "2025-01-12",
       "correo": "isabella@gmail.com",
-      "categoriaId": "5"
+      "categorias": [
+        "5"
+      ]
     },
     {
-      "id": "244a",
-      "nombre": "Veterinario",
-      "monto": 50000,
-      "fecha": "2025-02-11",
-      "categoria": "4",
-      "correo": "isabella@gmail.com"
+      "id": "a6c5",
+      "nombre": "gat",
+      "monto": 2,
+      "fecha": "2026-11-29",
+      "correo": "isabella@gmail.com",
+      "categorias": []
+    },
+    {
+      "id": "35bc",
+      "nombre": "Gatito",
+      "monto": 10200,
+      "fecha": "2024-02-21",
+      "correo": "isabella@gmail.com",
+      "categorias": []
+    },
+    {
+      "id": "b2b9",
+      "nombre": "Auto",
+      "monto": 2000,
+      "fecha": "2026-12-31",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "categoria": "3"
+    },
+    {
+      "id": "d7fb",
+      "nombre": "Super",
+      "monto": 5000,
+      "fecha": "2025-01-16",
+      "correo": "isabella@gmail.com",
+      "categorias": "1"
+    },
+    {
+      "id": "59e6",
+      "nombre": "u",
+      "monto": 22,
+      "fecha": "2024-11-29",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "4"
+      ],
+      "categoria": "4"
+    },
+    {
+      "id": "f7de",
+      "nombre": "AAA",
+      "monto": 1,
+      "fecha": "2026-11-29",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "1"
+      ]
     }
   ]
 }

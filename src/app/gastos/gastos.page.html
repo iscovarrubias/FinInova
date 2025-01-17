@@ -22,13 +22,15 @@
           placeholder="dd/mm/aaaa"
         ></ion-input>
       </ion-item>
-
+      
       <ion-item>
         <ion-label position="stacked">Categoría</ion-label>
-        <ion-select [(ngModel)]="nuevoGasto.categoria" placeholder="Selecciona una categoría" required>
+        <ion-select [(ngModel)]="nuevoGasto.categorias" placeholder="Selecciona una categoría">
           <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</ion-select-option>
         </ion-select>
       </ion-item>
+      
+      
 
     </ion-card-content>
   </ion-card>

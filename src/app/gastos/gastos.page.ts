@@ -16,8 +16,8 @@ export class GastosPage implements OnInit {
     nombre: '',
     monto: '',
     fecha: '',
-    categoria: '',
     correo: '', 
+    categorias: []
   };
 
   categorias: any[] = []; 
@@ -47,13 +47,19 @@ export class GastosPage implements OnInit {
       }
     );
   }
-
   async crearGasto() {
+    if (!this.nuevoGasto.nombre || !this.nuevoGasto.monto || !this.nuevoGasto.fecha || !this.nuevoGasto.categorias.length) {
+      const toast = await this.toastController.create({
+        message: 'Por favor, completa todos los campos.',
+        duration: 2000,
+        color: 'warning',
+      });
+      toast.present();
+      return;
+    }
+  
     const usuario = this.authService.getCurrentUser();
     const correo = usuario ? usuario.correo : this.nuevoGasto.correo;
-  
-    // Depuración: Verifica que el correo es correcto
-    console.log('Correo obtenido:', correo);
   
     if (!correo) {
       const toast = await this.toastController.create({
@@ -65,23 +71,8 @@ export class GastosPage implements OnInit {
       return;
     }
   
-    // Depuración: Verifica que los campos están siendo llenados correctamente
-    console.log('Nombre del gasto:', this.nuevoGasto.nombre);
-    console.log('Monto:', this.nuevoGasto.monto);
-    console.log('Fecha:', this.nuevoGasto.fecha);
+    this.nuevoGasto.categorias = [this.nuevoGasto.categorias[0]];  
   
-    // Verificación de campos obligatorios
-    if (!this.nuevoGasto.nombre || !this.nuevoGasto.monto || !this.nuevoGasto.fecha) {
-      const toast = await this.toastController.create({
-        message: 'Por favor, completa todos los campos.',
-        duration: 2000,
-        color: 'warning',
-      });
-      toast.present();
-      return;
-    }
-  
-    // Crear gasto
     this.usuarioService.obtenerUsuario(correo).subscribe(
       async (usuario: any) => {
         this.usuarioService.crearGasto(usuario.id, this.nuevoGasto, correo).subscribe(
@@ -102,7 +93,6 @@ export class GastosPage implements OnInit {
               color: 'danger',
             });
             toast.present();
-            this.limpiarFormulario();
           }
         );
       },
@@ -117,13 +107,15 @@ export class GastosPage implements OnInit {
     );
   }
   
+
+
   limpiarFormulario() {
     this.nuevoGasto = {
       nombre: '',
       monto: '',
       fecha: '',
-      categoria: '',
-      correo: '',  
+      correo: '',
+      categorias: [],
     };
   }
-}  
+}
