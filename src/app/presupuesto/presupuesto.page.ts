@@ -64,6 +64,11 @@ export class PresupuestoPage implements OnInit {
   
     this.nuevoPresupuesto.correo = usuario.correo;
   
+    if (this.nuevoPresupuesto.categoria) {
+      this.nuevoPresupuesto.categorias.push(this.nuevoPresupuesto.categoria);
+      delete this.nuevoPresupuesto.categoria;
+    }
+  
     if (!this.nuevoPresupuesto.nombre || !this.nuevoPresupuesto.fechaInicio || !this.nuevoPresupuesto.fechaCorte) {
       const toast = await this.toastController.create({
         message: 'Por favor, completa todos los campos.',
@@ -74,14 +79,9 @@ export class PresupuestoPage implements OnInit {
       return;
     }
   
-    if (this.nuevoPresupuesto.categoria) {
-      this.nuevoPresupuesto.categorias.push(this.nuevoPresupuesto.categoria);
-      delete this.nuevoPresupuesto.categoria;
-    }
-  
     if (this.nuevoPresupuesto.compartir) {
       const correoDestino = this.nuevoPresupuesto.correoDestino;
-    
+  
       if (!correoDestino) {
         const toast = await this.toastController.create({
           message: 'Por favor, ingresa un correo del destinatario.',
@@ -91,28 +91,49 @@ export class PresupuestoPage implements OnInit {
         toast.present();
         return;
       }
-    
-      this.usuarioService.crearPresupuesto(usuario.id, this.nuevoPresupuesto, correoDestino)
-        .subscribe(
-          async () => {
+  
+      this.usuarioService.verificarCorreo(correoDestino).subscribe(
+        async (usuarios) => {
+          if (usuarios && usuarios.length > 0) {
+            this.usuarioService.crearPresupuesto(usuario.id, this.nuevoPresupuesto, correoDestino)
+              .subscribe(
+                async () => {
+                  const toast = await this.toastController.create({
+                    message: 'Presupuesto compartido con éxito.',
+                    duration: 2000,
+                    color: 'success',
+                  });
+                  toast.present();
+                  this.router.navigate(['/home']);
+                  this.limpiarFormulario();
+                },
+                async () => {
+                  const toast = await this.toastController.create({
+                    message: 'Error al compartir el presupuesto.',
+                    duration: 2000,
+                    color: 'danger',
+                  });
+                  toast.present();
+                }
+              );
+          } else {
             const toast = await this.toastController.create({
-              message: 'Presupuesto compartido con éxito.',
-              duration: 2000,
-              color: 'success',
-            });
-            toast.present();
-            this.router.navigate(['/home']);
-            this.limpiarFormulario();
-          },
-          async () => {
-            const toast = await this.toastController.create({
-              message: 'Error al compartir el presupuesto.',
+              message: 'El correo proporcionado no está registrado.',
               duration: 2000,
               color: 'danger',
             });
             toast.present();
           }
-        );
+        },
+        async (error) => {
+          const toast = await this.toastController.create({
+            message: 'Error al verificar el correo.',
+            duration: 2000,
+            color: 'danger',
+          });
+          toast.present();
+        }
+      );
     } else {
       this.usuarioService.crearPresupuesto(usuario.id, this.nuevoPresupuesto)
         .subscribe(
@@ -137,7 +158,7 @@ export class PresupuestoPage implements OnInit {
         );
     }
   }
-
+  
   limpiarFormulario() {
     this.nuevoPresupuesto = {
       nombre: '',

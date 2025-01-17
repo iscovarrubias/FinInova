@@ -153,6 +153,30 @@
       ],
       "compartir": false,
       "correoDestino": null
+    },
+    {
+      "id": "6e7f",
+      "nombre": "jeje",
+      "fechaInicio": "2026-02-22",
+      "fechaCorte": "2027-11-11",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": true,
+      "correoDestino": "maxi@gmail.com"
+    },
+    {
+      "id": "f30b",
+      "nombre": "qqq",
+      "fechaInicio": "2024-12-11",
+      "fechaCorte": "2026-11-11",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": true,
+      "correoDestino": "a@gmail.com"
     }
   ],
   "categorias": [
