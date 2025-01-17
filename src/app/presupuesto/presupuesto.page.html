@@ -35,6 +35,17 @@
         </ion-select>
       </ion-item>
 
+      <ion-item>
+        <ion-label>¿Compartir presupuesto?</ion-label>
+        <ion-checkbox [(ngModel)]="nuevoPresupuesto.compartir"></ion-checkbox>
+      </ion-item>      
+      
+      <ion-item *ngIf="nuevoPresupuesto.compartir">
+        <ion-label position="stacked">Correo del destinatario</ion-label>
+        <ion-input [(ngModel)]="nuevoPresupuesto.correoDestino" placeholder="Correo del destinatario"></ion-input>
+      </ion-item>
+      
+
     </ion-card-content>
   </ion-card>
 

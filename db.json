@@ -42,7 +42,9 @@
       "correo": "ex1@gmail.com",
       "categorias": [
         "1,2"
-      ]
+      ],
+      "compartir": false,
+      "correoDestino": ""
     },
     {
       "id": "e23d",
@@ -52,7 +54,9 @@
       "correo": "isabella@gmail.com",
       "categorias": [
         "3"
-      ]
+      ],
+      "compartir": false,
+      "correoDestino": ""
     },
     {
       "id": "98cd",
@@ -62,7 +66,9 @@
       "correo": "isabella@gmail.com",
       "categorias": [
         "1"
-      ]
+      ],
+      "compartir": true,
+      "correoDestino": "a@example.com"
     },
     {
       "id": "b359",
@@ -72,7 +78,9 @@
       "correo": "isabella@gmail.com",
       "categorias": [
         "3"
-      ]
+      ],
+      "compartir": false,
+      "correoDestino": ""
     },
     {
       "id": "5a31",
@@ -82,7 +90,69 @@
       "correo": "isabella@gmail.com",
       "categorias": [
         "5"
-      ]
+      ],
+      "compartir": false,
+      "correoDestino": ""
+    },
+    {
+      "id": "c6c4",
+      "nombre": "Juegos",
+      "fechaInicio": "2025-11-11",
+      "fechaCorte": "2025-02-12",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "compartir": false,
+      "correoDestino": ""
+    },
+    {
+      "id": "4e7d",
+      "nombre": "Gatos",
+      "fechaInicio": "2025-02-21",
+      "fechaCorte": "2026-02-20",
+      "correo": "",
+      "categorias": [
+        "3"
+      ],
+      "compartir": true,
+      "correoDestino": "a@gmail.com"
+    },
+    {
+      "id": "84a0",
+      "nombre": "Perros",
+      "fechaInicio": "2024-11-29",
+      "fechaCorte": "2026-11-29",
+      "correo": "",
+      "categorias": [
+        "3"
+      ],
+      "compartir": false,
+      "correoDestino": null
+    },
+    {
+      "id": "f7be",
+      "nombre": "bebe",
+      "fechaInicio": "2025-11-29",
+      "fechaCorte": "2026-11-29",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": true,
+      "correoDestino": "a@gmail.com"
+    },
+    {
+      "id": "8517",
+      "nombre": "Hola",
+      "fechaInicio": "2025-11-29",
+      "fechaCorte": "2026-02-19",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": false,
+      "correoDestino": null
     }
   ],
   "categorias": [

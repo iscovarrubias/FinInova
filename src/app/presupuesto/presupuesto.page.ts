@@ -10,7 +10,6 @@ import { AuthService } from '../api/auth.service';
   templateUrl: './presupuesto.page.html',
   styleUrls: ['./presupuesto.page.scss'],
 })
-
 export class PresupuestoPage implements OnInit {
 
   nuevoPresupuesto: any = {  
@@ -18,10 +17,11 @@ export class PresupuestoPage implements OnInit {
     fechaInicio: '',
     fechaCorte: '',
     correo: '', 
-    categorias: []  
+    categorias: [], 
+    compartir: false 
   };
-
-  categorias: any[] = []; 
+  
+  categorias: any[] = [];
 
   private apiUrl = 'http://localhost:3000';
 
@@ -51,17 +51,18 @@ export class PresupuestoPage implements OnInit {
 
   async crearPresupuesto() {
     const usuario = this.authService.getCurrentUser();
-    const correo = usuario ? usuario.correo : this.nuevoPresupuesto.correo;
-  
-    if (!correo) {
+    
+    if (!usuario || !usuario.correo) {
       const toast = await this.toastController.create({
-        message: 'Por favor, ingresa un correo válido.',
+        message: 'No se pudo obtener el correo del usuario.',
         duration: 2000,
-        color: 'warning',
+        color: 'danger',
       });
       toast.present();
       return;
     }
+  
+    this.nuevoPresupuesto.correo = usuario.correo;
   
     if (!this.nuevoPresupuesto.nombre || !this.nuevoPresupuesto.fechaInicio || !this.nuevoPresupuesto.fechaCorte) {
       const toast = await this.toastController.create({
@@ -75,13 +76,47 @@ export class PresupuestoPage implements OnInit {
   
     if (this.nuevoPresupuesto.categoria) {
       this.nuevoPresupuesto.categorias.push(this.nuevoPresupuesto.categoria);
-      delete this.nuevoPresupuesto.categoria; 
+      delete this.nuevoPresupuesto.categoria;
     }
   
-    this.usuarioService.obtenerUsuario(correo).subscribe(
-      async (usuario: any) => {
-        this.usuarioService.crearPresupuesto(usuario.id, this.nuevoPresupuesto, correo).subscribe(
-          async (res: any) => {
+    if (this.nuevoPresupuesto.compartir) {
+      const correoDestino = this.nuevoPresupuesto.correoDestino;
+    
+      if (!correoDestino) {
+        const toast = await this.toastController.create({
+          message: 'Por favor, ingresa un correo del destinatario.',
+          duration: 2000,
+          color: 'warning',
+        });
+        toast.present();
+        return;
+      }
+    
+      this.usuarioService.crearPresupuesto(usuario.id, this.nuevoPresupuesto, correoDestino)
+        .subscribe(
+          async () => {
+            const toast = await this.toastController.create({
+              message: 'Presupuesto compartido con éxito.',
+              duration: 2000,
+              color: 'success',
+            });
+            toast.present();
+            this.router.navigate(['/home']);
+            this.limpiarFormulario();
+          },
+          async () => {
+            const toast = await this.toastController.create({
+              message: 'Error al compartir el presupuesto.',
+              duration: 2000,
+              color: 'danger',
+            });
+            toast.present();
+          }
+        );
+    } else {
+      this.usuarioService.crearPresupuesto(usuario.id, this.nuevoPresupuesto)
+        .subscribe(
+          async () => {
             const toast = await this.toastController.create({
               message: 'Presupuesto creado con éxito.',
               duration: 2000,
@@ -91,29 +126,18 @@ export class PresupuestoPage implements OnInit {
             this.router.navigate(['/home']);
             this.limpiarFormulario();
           },
-          async (err: any) => {
+          async () => {
             const toast = await this.toastController.create({
-              message: 'Error al crear presupuesto. Inténtalo nuevamente.',
+              message: 'Error al crear el presupuesto.',
               duration: 2000,
               color: 'danger',
             });
             toast.present();
-            this.limpiarFormulario();
           }
         );
-      },
-      async (err: any) => {
-        const toast = await this.toastController.create({
-          message: 'El usuario no existe.',
-          duration: 2000,
-          color: 'danger',
-        });
-        toast.present();
-      }
-    );
+    }
   }
-  
-  
+
   limpiarFormulario() {
     this.nuevoPresupuesto = {
       nombre: '',
@@ -121,6 +145,7 @@ export class PresupuestoPage implements OnInit {
       fechaCorte: '',
       correo: '',
       categorias: [],  
+      compartir: false,
     };
   }
 }
