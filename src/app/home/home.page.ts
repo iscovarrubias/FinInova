@@ -60,7 +60,7 @@ export class HomePage implements OnInit {
         this.presupuestos = presupuestos.map((presupuesto) => {
           const categorias = Array.isArray(presupuesto.categorias) && presupuesto.categorias.length > 0
             ? presupuesto.categorias
-            : [presupuesto.categoria];
+            : [presupuesto.categoria]; 
 
           presupuesto.categoriaNombre = categorias
             .map((id: number) => {
@@ -77,10 +77,23 @@ export class HomePage implements OnInit {
     ).subscribe(
       (gastos: any[]) => {
         console.log('Gastos obtenidos:', gastos);
-        this.gastos = gastos;
+        this.gastos = gastos.map((gasto) => {
+          const categorias = Array.isArray(gasto.categorias) && gasto.categorias.length > 0
+            ? gasto.categorias
+            : [gasto.categoria]; 
+
+          gasto.categoriaNombre = categorias
+            .map((id: number) => {
+              const categoria = this.categorias.find(c => c.id === id);
+              return categoria ? categoria.nombre : 'Sin Categoría';
+            })
+            .join(', ');
+
+          return gasto;
+        });
 
         this.user.gastos = gastos.reduce((total, gasto) => total + gasto.monto, 0);
-        this.calcularSaldo(); 
+        this.calcularSaldo();
       },
       (err) => {
         console.error('Error al obtener datos:', err);

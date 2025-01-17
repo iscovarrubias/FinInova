@@ -147,62 +147,6 @@
       "categorias": [
         "5"
       ]
-    },
-    {
-      "id": "a6c5",
-      "nombre": "gat",
-      "monto": 2,
-      "fecha": "2026-11-29",
-      "correo": "isabella@gmail.com",
-      "categorias": []
-    },
-    {
-      "id": "35bc",
-      "nombre": "Gatito",
-      "monto": 10200,
-      "fecha": "2024-02-21",
-      "correo": "isabella@gmail.com",
-      "categorias": []
-    },
-    {
-      "id": "b2b9",
-      "nombre": "Auto",
-      "monto": 2000,
-      "fecha": "2026-12-31",
-      "correo": "isabella@gmail.com",
-      "categorias": [
-        "3"
-      ],
-      "categoria": "3"
-    },
-    {
-      "id": "d7fb",
-      "nombre": "Super",
-      "monto": 5000,
-      "fecha": "2025-01-16",
-      "correo": "isabella@gmail.com",
-      "categorias": "1"
-    },
-    {
-      "id": "59e6",
-      "nombre": "u",
-      "monto": 22,
-      "fecha": "2024-11-29",
-      "correo": "isabella@gmail.com",
-      "categorias": [
-        "4"
-      ],
-      "categoria": "4"
-    },
-    {
-      "id": "f7de",
-      "nombre": "AAA",
-      "monto": 1,
-      "fecha": "2026-11-29",
-      "correo": "isabella@gmail.com",
-      "categorias": [
-        "1"
-      ]
     }
   ]
 }
