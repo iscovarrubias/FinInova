@@ -39,7 +39,7 @@
         <ion-row *ngFor="let gasto of gastos">
           <ion-col size="2" class="table-item">{{ gasto.nombre }}</ion-col>
           <ion-col size="2" class="table-item">{{ gasto.fecha | date: 'dd/MM/yyyy' }}</ion-col>
-          <ion-col size="2" class="table-item">${{ gasto.montoTotal }}</ion-col>
+          <ion-col size="2" class="table-item">${{ gasto.monto }}</ion-col>
           <ion-col size="2" class="table-item">{{ gasto.cuotas }}</ion-col>
           <ion-col size="2" class="table-item">{{ gasto.categoriaNombre || 'Sin Categoría' }}</ion-col>
           <ion-col size="2" class="table-item">{{ gasto.descripcion }}</ion-col>

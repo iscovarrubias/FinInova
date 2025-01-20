@@ -204,6 +204,32 @@
       "descripcion": "Comida del gatito",
       "tipo": "credito",
       "cuotas": 2
+    },
+    {
+      "id": "f46e",
+      "nombre": "Medico",
+      "monto": 7500,
+      "fecha": "2025-01-19",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "4"
+      ],
+      "descripcion": "Clinica",
+      "tipo": "credito",
+      "cuotas": 2
+    },
+    {
+      "id": "d082",
+      "nombre": "Medico",
+      "monto": 7500,
+      "fecha": "2025-02-19",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "4"
+      ],
+      "descripcion": "Clinica",
+      "tipo": "credito",
+      "cuotas": 2
     }
   ]
 }
