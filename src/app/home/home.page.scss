@@ -6,8 +6,8 @@ ion-menu {
 }
 
 ion-header {
-  color: #ffffff; 
-  background-color: #ffffff; 
+  color: #ffffff;
+  background-color: #ffffff;
   padding: 25px;
 }
 
@@ -17,13 +17,12 @@ ion-title {
   font-weight: bold;
   text-align: center;
   color: #ffffff;
-  background-color: #ff66b2; 
+  background-color: #ff66b2;
 }
 
 ion-buttons[slot="start"] {
-  color: #ffffff; 
+  color: #ffffff;
 }
-
 
 ion-menu ion-item {
   --background: transparent;
@@ -79,23 +78,6 @@ ion-title {
   background: #ffffff;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-.table-header {
-  background-color: #f4f4f9;
-  color: #333;
-  font-weight: bold;
-  text-align: center;
-  font-size: 9px;
-}
-
-.table-item {
-  background-color: #fafafa;
-  color: #555;
-  text-align: center;
-  border-bottom: 1px solid #e0e0e0;
-  font-size: 12px;
-}
-
 
 ion-row:nth-child(even) .table-item {
   background-color: #f0f8ff;
@@ -185,14 +167,13 @@ ion-button#menu-toggle:hover {
   --background: #f94bc5;
 }
 
-
 ion-menu {
   transition: transform 0.3s ease;
 }
 
 ion-menu ion-content {
   background-color: white;
-  color: #FF66B2; 
+  color: #FF66B2;
 }
 
 ion-menu ion-item {
@@ -209,4 +190,66 @@ ion-buttons[slot="start"] {
   top: 20px;
   left: 10px;
   color: #FF66B2;
+}
+
+ion-card {
+  margin: 6px;
+  border-radius: 20px;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 0;
+}
+
+ion-card-content {
+  padding: 0;
+}
+
+ion-grid {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+ion-row {
+  flex-wrap: wrap;
+  margin-left: 1px;
+  margin-right: 1px;
+}
+
+ion-col {
+  padding: 1px;
+}
+
+.table-header {
+  background-color: #f4f4f9;
+  color: #333;
+  font-weight: bold;
+  font-size: 10px;
+  padding: 0;
+  text-align: center;
+  margin: 5;
+}
+
+.table-item {
+  background-color: #fafafa;
+  color: #555;
+  border-bottom: 1px solid #e0e0e0;
+  font-size: 10px;
+  padding: 0;
+  text-align: center;
+  margin: 5;
+}
+
+ion-row:nth-child(even) .table-item {
+  background-color: #f0f8ff;
+}
+
+ion-row:nth-child(odd) .table-item {
+  background-color: #fff0f5;
+}
+
+ion-row {
+  height: auto; 
+  margin-left: 0;
+  margin-right: 0;
 }

@@ -28,22 +28,22 @@
       </div>
       <ion-grid>
         <ion-row>
-          <ion-col size="2" class="table-header">Nombre</ion-col>
-          <ion-col size="2" class="table-header">Fecha</ion-col>
-          <ion-col size="2" class="table-header">Monto</ion-col>
-          <ion-col size="2" class="table-header">Cuotas</ion-col>
-          <ion-col size="2" class="table-header">Categoría</ion-col>
-          <ion-col size="2" class="table-header">Descrip.</ion-col>
-          <ion-col size="2" class="table-header">Pago</ion-col>
+          <ion-col size="1.7" class="table-header">Nombre</ion-col>
+          <ion-col size="1.7" class="table-header">Fecha</ion-col>
+          <ion-col size="1.8" class="table-header">Monto</ion-col>
+          <ion-col size="1.7" class="table-header">Cuotas</ion-col>
+          <ion-col size="1.8" class="table-header">Categoría</ion-col>
+          <ion-col size="1.7" class="table-header">Descrip.</ion-col>
+          <ion-col size="1.6" class="table-header">Pago</ion-col>
         </ion-row>
         <ion-row *ngFor="let gasto of gastos">
-          <ion-col size="2" class="table-item">{{ gasto.nombre }}</ion-col>
-          <ion-col size="2" class="table-item">{{ gasto.fecha | date: 'dd/MM/yyyy' }}</ion-col>
-          <ion-col size="2" class="table-item">${{ gasto.monto }}</ion-col>
-          <ion-col size="2" class="table-item">{{ gasto.cuotas }}</ion-col>
-          <ion-col size="2" class="table-item">{{ gasto.categoriaNombre || 'Sin Categoría' }}</ion-col>
-          <ion-col size="2" class="table-item">{{ gasto.descripcion }}</ion-col>
-          <ion-col size="2" class="table-item">{{ gasto.tipoPago }}</ion-col>
+          <ion-col size="1.7" class="table-item">{{ gasto.nombre }}</ion-col>
+          <ion-col size="1.7" class="table-item">{{ gasto.fecha | date: 'dd/MM/yyyy' }}</ion-col>
+          <ion-col size="1.8" class="table-item">${{ gasto.monto }}</ion-col>
+          <ion-col size="1.7" class="table-item">{{ gasto.cuotas }}</ion-col>
+          <ion-col size="1.8" class="table-item">{{ gasto.categoriaNombre || 'Sin Categoría' }}</ion-col>
+          <ion-col size="1.7" class="table-item">{{ gasto.descripcion }}</ion-col>
+          <ion-col size="1.6" class="table-item">{{ gasto.tipoPago }}</ion-col>
         </ion-row>
         
       </ion-grid>
