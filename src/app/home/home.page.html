@@ -1,0 +1,110 @@
+<ion-header>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+</ion-header>
+
+<ion-content id="main-content">
+  <div class="date">
+    <p>{{ currentDate }}</p>
+  </div>
+
+  <ion-header>
+    <ion-title>
+      ¡Bienvenido/a, {{ userName }}!
+    </ion-title>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>GASTOS</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="summary">
+        <div class="summary-item">
+          <p>Tus Gastos</p>
+          <p>${{ user.gastos > 0 ? user.gastos : 0 }}</p>
+        </div>
+      </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1.7" class="table-header">Nombre</ion-col>
+          <ion-col size="1.7" class="table-header">Fecha</ion-col>
+          <ion-col size="1.8" class="table-header">Monto</ion-col>
+          <ion-col size="1.7" class="table-header">Cuotas</ion-col>
+          <ion-col size="1.8" class="table-header">Categoría</ion-col>
+          <ion-col size="1.7" class="table-header">Descrip.</ion-col>
+          <ion-col size="1.6" class="table-header">Pago</ion-col>
+        </ion-row>
+        <ion-row *ngFor="let gasto of gastos">
+          <ion-col size="1.7" class="table-item">{{ gasto.nombre }}</ion-col>
+          <ion-col size="1.7" class="table-item">{{ gasto.fecha | date: 'dd/MM/yyyy' }}</ion-col>
+          <ion-col size="1.8" class="table-item">${{ gasto.monto }}</ion-col>
+          <ion-col size="1.7" class="table-item">{{ gasto.cuotas }}</ion-col>
+          <ion-col size="1.8" class="table-item">{{ gasto.categoriaNombre || 'Sin Categoría' }}</ion-col>
+          <ion-col size="1.7" class="table-item">{{ gasto.descripcion }}</ion-col>
+          <ion-col size="1.6" class="table-item">{{ gasto.tipoPago }}</ion-col>
+        </ion-row>
+        
+      </ion-grid>
+      
+      <ion-button expand="block" routerLink="/gastos">
+        AÑADIR GASTOS
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>PRESUPUESTOS</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="presupuestos.length > 0; else noPresupuestos">
+        <ion-grid>
+          <ion-row>
+            <ion-col size="3" class="table-header">Nombre</ion-col>
+            <ion-col size="3" class="table-header">Fecha Inicio</ion-col>
+            <ion-col size="3" class="table-header">Fecha Corte</ion-col>
+            <ion-col size="3" class="table-header">Categoría</ion-col>
+          </ion-row>
+          <ion-row *ngFor="let presupuesto of presupuestos">
+            <ion-col size="3" class="table-item">{{ presupuesto.nombre }}</ion-col>
+            <ion-col size="3" class="table-item">{{ presupuesto.fechaInicio }}</ion-col>
+            <ion-col size="3" class="table-item">{{ presupuesto.fechaCorte }}</ion-col>
+            <ion-col size="3" class="table-item">{{ presupuesto.categoriaNombre || 'Sin Categoría' }}</ion-col>
+          </ion-row>
+        </ion-grid>
+      </div>
+      <ng-template #noPresupuestos>
+        <p>No hay presupuestos disponibles.</p>
+      </ng-template>
+
+      <ion-button expand="block" routerLink="/presupuesto">
+        CREAR PRESUPUESTO
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
+
+<ion-menu content-id="main-content">
+  <ion-header>
+    <ion-label>MENÚ</ion-label>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <ion-item button routerLink="/home">
+        <ion-label>Inicio</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/gastos">
+        <ion-label>Añadir Gasto</ion-label>
+      </ion-item>
+      <ion-item button routerLink="/presupuesto">
+        <ion-label>Crear Presupuesto</ion-label>
+      </ion-item>
+      <ion-item button (click)="cerrarSesion()">
+        <ion-label>Cerrar Sesión</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>

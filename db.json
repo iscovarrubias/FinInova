@@ -1,0 +1,235 @@
+{
+  "usuario": [
+    {
+      "id": "1",
+      "nombre": "ejemplo1",
+      "correo": "ex1@gmail.com",
+      "contraseña": "password123",
+      "fecha": "2020-01-01",
+      "genero": "masculino"
+    },
+    {
+      "id": "2",
+      "nombre": "ejemplo2",
+      "correo": "ex2@gmail.com",
+      "contraseña": "password123w",
+      "fecha": "2025-01-01",
+      "genero": "femenino"
+    },
+    {
+      "id": "4eb9",
+      "nombre": "Isabella",
+      "correo": "isabella@gmail.com",
+      "contraseña": "Isabella",
+      "fecha": "2003-11-29",
+      "genero": "femenino"
+    },
+    {
+      "id": "8a37",
+      "nombre": "a",
+      "correo": "a@gmail.com",
+      "contraseña": "a",
+      "fecha": "2022-12-29",
+      "genero": "Femenino"
+    }
+  ],
+  "presupuestos": [
+    {
+      "id": "1",
+      "nombre": "Presupuesto Mensual",
+      "fechaInicio": "2023-01-01",
+      "fechaCorte": "2023-12-31",
+      "correo": "ex1@gmail.com",
+      "categorias": [
+        "1,2"
+      ],
+      "compartir": false,
+      "correoDestino": ""
+    },
+    {
+      "id": "e23d",
+      "nombre": "Pañales",
+      "fechaInicio": "2025-02-12",
+      "fechaCorte": "2026-04-13",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": false,
+      "correoDestino": ""
+    },
+    {
+      "id": "98cd",
+      "nombre": "Super",
+      "fechaInicio": "2025-02-11",
+      "fechaCorte": "2026-09-11",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "1"
+      ],
+      "compartir": true,
+      "correoDestino": "a@example.com"
+    },
+    {
+      "id": "b359",
+      "nombre": "Auto",
+      "fechaInicio": "2026-02-22",
+      "fechaCorte": "2027-02-22",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": false,
+      "correoDestino": ""
+    },
+    {
+      "id": "5a31",
+      "nombre": "Internet",
+      "fechaInicio": "2025-11-30",
+      "fechaCorte": "2025-12-31",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "compartir": false,
+      "correoDestino": ""
+    },
+    {
+      "id": "c6c4",
+      "nombre": "Juegos",
+      "fechaInicio": "2025-11-11",
+      "fechaCorte": "2025-02-12",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "compartir": false,
+      "correoDestino": ""
+    },
+    {
+      "id": "84a0",
+      "nombre": "Perros",
+      "fechaInicio": "2024-11-29",
+      "fechaCorte": "2026-11-29",
+      "correo": "",
+      "categorias": [
+        "3"
+      ],
+      "compartir": false,
+      "correoDestino": null
+    },
+    {
+      "id": "8517",
+      "nombre": "Hola",
+      "fechaInicio": "2025-11-29",
+      "fechaCorte": "2026-02-19",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": false,
+      "correoDestino": null
+    },
+    {
+      "id": "6e7f",
+      "nombre": "jeje",
+      "fechaInicio": "2026-02-22",
+      "fechaCorte": "2027-11-11",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": true,
+      "correoDestino": "maxi@gmail.com"
+    }
+  ],
+  "categorias": [
+    {
+      "id": "1",
+      "nombre": "Comida"
+    },
+    {
+      "id": "2",
+      "nombre": "Transporte"
+    },
+    {
+      "id": "3",
+      "nombre": "Casa"
+    },
+    {
+      "id": "4",
+      "nombre": "Salud"
+    },
+    {
+      "id": "5",
+      "nombre": "Entretenimiento"
+    }
+  ],
+  "gastos": [
+    {
+      "id": "080a",
+      "nombre": "Ropa",
+      "monto": 21400,
+      "fecha": "2024-02-11",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "descripcion": "Ropa ",
+      "tipo": "debito",
+      "cuotas": 1
+    },
+    {
+      "id": "7a8e",
+      "nombre": "Comida Gato",
+      "monto": 10000,
+      "fecha": "2025-02-12",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "descripcion": "Comida del gatito",
+      "tipo": "credito",
+      "cuotas": 2
+    },
+    {
+      "id": "7c6b",
+      "nombre": "Comida Gato",
+      "monto": 10000,
+      "fecha": "2025-03-12",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "descripcion": "Comida del gatito",
+      "tipo": "credito",
+      "cuotas": 2
+    },
+    {
+      "id": "f46e",
+      "nombre": "Medico",
+      "monto": 7500,
+      "fecha": "2025-01-19",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "4"
+      ],
+      "descripcion": "Clinica",
+      "tipo": "credito",
+      "cuotas": 2
+    },
+    {
+      "id": "d082",
+      "nombre": "Medico",
+      "monto": 7500,
+      "fecha": "2025-02-19",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "4"
+      ],
+      "descripcion": "Clinica",
+      "tipo": "credito",
+      "cuotas": 2
+    }
+  ]
+}
