@@ -18,8 +18,8 @@ export class AuthService {
     }
   }
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.get<any>(`${this.apiUrl}/usuario?email=${email}&password=${password}`).pipe(
+  login(correo: string, contraseña: string): Observable<any> {
+    return this.http.get<any>(`${this.apiUrl}/usuario?correo=${correo}&contraseña=${contraseña}`).pipe(
       tap((usuario) => {
         if (usuario && usuario.length > 0) {  
           this.setCurrentUser(usuario[0]);
