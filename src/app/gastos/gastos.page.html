@@ -1,0 +1,56 @@
+<ion-content>
+  <ion-card>
+    <ion-card-content>
+      <ion-card-title>AÑADIR GASTO</ion-card-title>
+
+      <ion-item>
+        <ion-label position="floating">Nombre del Gasto</ion-label>
+        <ion-input [(ngModel)]="nuevoGasto.nombre" required></ion-input>
+      </ion-item>      
+
+      <ion-item>
+        <ion-label position="stacked">Monto del Gasto</ion-label>
+        <ion-input [(ngModel)]="nuevoGasto.monto" type="number" placeholder="Ej: 1000" required></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha del Gasto</ion-label>
+        <ion-input
+          type="date"
+          labelPlacement="floating"
+          [(ngModel)]="nuevoGasto.fecha"
+          placeholder="dd/mm/aaaa"
+        ></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Categoría</ion-label>
+        <ion-select [(ngModel)]="nuevoGasto.categorias" placeholder="Selecciona una categoría">
+          <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item>
+        <ion-label position="stacked">Descripción</ion-label>
+        <ion-textarea [(ngModel)]="nuevoGasto.descripcion" placeholder="Ingresa una descripción"></ion-textarea>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label position="stacked">Tipo de Gasto</ion-label>
+        <ion-select [(ngModel)]="nuevoGasto.tipo" placeholder="Selecciona tipo">
+          <ion-select-option value="debito">Débito</ion-select-option>
+          <ion-select-option value="credito">Crédito</ion-select-option>
+        </ion-select>
+      </ion-item>
+      
+      <ion-item *ngIf="nuevoGasto.tipo === 'credito'">
+        <ion-label position="stacked">Número de Cuotas</ion-label>
+        <ion-input [(ngModel)]="nuevoGasto.cuotas" type="number" min="1" placeholder="Ej: 3"></ion-input>
+      </ion-item>      
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" (click)="crearGasto()">
+    AÑADIR
+  </ion-button>
+</ion-content>
