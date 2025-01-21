@@ -4,6 +4,8 @@ import { Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 import { tap } from 'rxjs/operators';
 import { catchError } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -80,6 +82,18 @@ export class UsuarioService {
       .pipe(catchError(this.handleError('obtenerPresupuestos')));
   }
 
+  obtenerPresupuestosPorCategoria(categoriaId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/presupuestos`, this.httpOptions)
+      .pipe(
+        map(presupuestos => 
+          presupuestos.filter(presupuesto => 
+            presupuesto.categorias.includes(categoriaId)
+          )
+        ),
+        catchError(this.handleError('obtenerPresupuestosPorCategoria'))
+      );
+  }
+  
   crearGasto(userId: string, gasto: any, correo: string): Observable<any> {
     const gastoConCorreo = { 
       ...gasto, 

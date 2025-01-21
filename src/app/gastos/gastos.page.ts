@@ -17,12 +17,14 @@ export class GastosPage implements OnInit {
     fecha: '',
     correo: '',
     categorias: [],
+    presupuesto: null,
     descripcion: '',
     tipo: 'debito',
     cuotas: 1,
   };
 
   categorias: any[] = [];
+  presupuestos: any[] = [];
   private apiUrl = 'http://localhost:3000';
 
   constructor(
@@ -48,6 +50,34 @@ export class GastosPage implements OnInit {
       }
     );
   }
+
+  cargarPresupuestosPorCategoria(categoriaId: string) {
+    this.http.get<any[]>(`${this.apiUrl}/presupuestos`).subscribe(
+      (presupuestos: any[]) => {
+        this.presupuestos = presupuestos.filter((presupuesto) =>
+          presupuesto.categorias.includes(categoriaId)
+        );
+        console.log('Presupuestos filtrados:', this.presupuestos);
+      },
+      (error) => {
+        console.error('Error al obtener presupuestos:', error);
+      }
+    );
+  }
+  onCategoriaChange(event: Event) {
+    const selectElement = event.target as HTMLSelectElement;
+    const categoriaId = selectElement.value;
+  
+    this.usuarioService.obtenerPresupuestosPorCategoria(categoriaId).subscribe(
+      (presupuestos: any[]) => {
+        this.presupuestos = presupuestos;
+      },
+      (error) => {
+        console.error('Error al obtener presupuestos:', error);
+      }
+    );
+  }
+  
 
   async crearGasto() {
     if (!this.nuevoGasto.nombre || !this.nuevoGasto.monto || !this.nuevoGasto.fecha || !this.nuevoGasto.categorias.length) {
@@ -123,7 +153,6 @@ export class GastosPage implements OnInit {
     this.limpiarFormulario(); 
     this.router.navigate(['/home']);
   }
-  
 
   limpiarFormulario() {
     this.nuevoGasto = {
@@ -132,6 +161,7 @@ export class GastosPage implements OnInit {
       fecha: '',
       correo: '',
       categorias: [],
+      presupuesto: null,
       descripcion: '',
       tipo: 'debito',
       cuotas: 1,

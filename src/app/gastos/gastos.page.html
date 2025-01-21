@@ -14,6 +14,11 @@
       </ion-item>
 
       <ion-item>
+        <ion-label position="stacked">Descripción</ion-label>
+        <ion-textarea [(ngModel)]="nuevoGasto.descripcion" placeholder="Ingresa una descripción"></ion-textarea>
+      </ion-item>
+
+      <ion-item>
         <ion-label position="stacked">Fecha del Gasto</ion-label>
         <ion-input
           type="date"
@@ -24,14 +29,18 @@
       </ion-item>
       
       <ion-item>
-        <ion-label position="stacked">Categoría</ion-label>
-        <ion-select [(ngModel)]="nuevoGasto.categorias" placeholder="Selecciona una categoría">
-          <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</ion-select-option>
-        </ion-select>
+        <label for="categoria">Categoría</label>
+        <select id="categoria" [(ngModel)]="nuevoGasto.categorias" name="categoria" (change)="onCategoriaChange($event)" required>
+          <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</option>
+        </select>        
       </ion-item>
+
       <ion-item>
-        <ion-label position="stacked">Descripción</ion-label>
-        <ion-textarea [(ngModel)]="nuevoGasto.descripcion" placeholder="Ingresa una descripción"></ion-textarea>
+        <label for="presupuesto">Presupuesto</label>
+        <select id="presupuesto" [(ngModel)]="nuevoGasto.presupuesto" name="presupuesto" required>
+          <option *ngIf="!nuevoGasto.categorias || nuevoGasto.categorias.length === 0" disabled value="">Selecciona una categoría primero</option>
+          <option *ngFor="let presupuesto of presupuestos" [value]="presupuesto.id">{{ presupuesto.nombre }}</option>
+        </select>
       </ion-item>
       
       <ion-item>
