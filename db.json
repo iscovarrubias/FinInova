@@ -141,6 +141,18 @@
       ],
       "compartir": true,
       "correoDestino": "maxi@gmail.com"
+    },
+    {
+      "id": "76bd",
+      "nombre": "Casa",
+      "fechaInicio": "2025-11-29",
+      "fechaCorte": "2026-11-29",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "compartir": true,
+      "correoDestino": "a@gmail.com"
     }
   ],
   "categorias": [

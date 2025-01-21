@@ -55,8 +55,19 @@ export class AuthService {
   }
 
   isAuthenticated(): boolean {
+    console.log('Revisando...');
+    if (!this.currentUser) {
+      const user = localStorage.getItem('currentUser');
+      if (user) {
+        this.currentUser = JSON.parse(user);
+        console.log('Usuario encontrado en localStorage:', this.currentUser);
+      } else {
+        console.log('No hay usuario autenticado.');
+      }
+    }
     return this.currentUser !== null;
   }
+  
 
   ensureAuthenticated(): void {
     if (!this.isAuthenticated()) {
