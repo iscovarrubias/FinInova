@@ -1,0 +1,68 @@
+ion-content {
+    --background: #ffffff;
+  }
+
+  ion-header {
+    --background: #ffa2db;
+  }
+  
+  ion-toolbar {
+    --background: #ff8cd3;
+  }
+  
+  ion-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+  
+  canvas {
+    width: 100% !important;
+    height: 300px;
+    margin-top: 20px;
+  }
+  
+  ion-item {
+    margin: 10px 0;
+  }
+  
+  h2 {
+    color: #ff89d2;
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  p {
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .filters {
+    padding: 20px;
+  }
+  
+  .chart-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .chart-wrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .chart {
+    flex: 1; 
+  }
+  
+  .percentages {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin-top: 20px;
+  }
+  

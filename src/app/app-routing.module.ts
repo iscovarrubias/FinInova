@@ -23,23 +23,28 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () => import('./home/home.module').then(m => m.HomePageModule),
-    canActivate: [AuthGuard], 
+    canActivate: [AuthGuard],
   },
   {
     path: 'presupuesto',
     loadChildren: () => import('./presupuesto/presupuesto.module').then(m => m.PresupuestoPageModule),
-    canActivate: [AuthGuard], 
+    canActivate: [AuthGuard],
   },
   {
     path: 'gastos',
     loadChildren: () => import('./gastos/gastos.module').then(m => m.GastosPageModule),
-    canActivate: [AuthGuard], 
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'resumen',
+    loadChildren: () => import('./resumen/resumen.module').then(m => m.ResumenPageModule)
   },
   {
     path: '**',
     loadChildren: () => import('./not-found/not-found.module').then(m => m.NotFoundPageModule),
   },
 ];
+
 
 
 @NgModule({

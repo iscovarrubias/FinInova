@@ -26,6 +26,10 @@
           <p>${{ user.gastos > 0 ? user.gastos : 0 }}</p>
         </div>
       </div>
+      <ion-button expand="block" routerLink="/resumen">
+        VER RESUMEN
+      </ion-button>
+      
       <ion-grid>
         <ion-row>
           <ion-col size="1.7" class="table-header">Nombre</ion-col>
@@ -45,7 +49,6 @@
           <ion-col size="1.7" class="table-item">{{ gasto.descripcion }}</ion-col>
           <ion-col size="1.6" class="table-item">{{ gasto.tipoPago }}</ion-col>
         </ion-row>
-        
       </ion-grid>
       
       <ion-button expand="block" routerLink="/gastos">
