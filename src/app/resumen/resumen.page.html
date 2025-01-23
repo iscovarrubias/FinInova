@@ -13,7 +13,6 @@
     <p>{{ description }}</p>
   </div>
 
-  <!-- Burbuja con porcentajes -->
   <div class="percentages" *ngIf="categories.length > 0 && percentages.length > 0">
     <div *ngFor="let percentage of percentages; let i = index" class="percentage-bubble">
       <p>{{ categories[i]?.nombre }}: {{ percentage }}%</p>
