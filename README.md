@@ -8,9 +8,11 @@
 
 3 - npm install chart.js
 
-4 - npx json-server db.json
+4 - npm install chartjs-plugin-datalabels --save
 
-5 - ionic serve
+5 - npx json-server db.json
+
+6 - ionic serve
 
 ➤ Versiones:
 
