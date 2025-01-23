@@ -2,13 +2,15 @@
 
 ➤ Pasos para ejecutar:
 
-1-npm install 
+1 - npm install 
 
-2-npm install json-server
+2 - npm install json-server
 
-3-npx json-server db.json
+3 - npm install chart.js
 
-4-ionic serve
+4 - npx json-server db.json
+
+5 - ionic serve
 
 ➤ Versiones:
 
