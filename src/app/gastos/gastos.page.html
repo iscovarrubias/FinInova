@@ -1,4 +1,3 @@
-
 <ion-toolbar>
   <ion-buttons slot="start">
     <ion-button (click)="volverAtras()">
@@ -15,7 +14,7 @@
       <ion-item>
         <ion-label position="floating">Nombre del Gasto</ion-label>
         <ion-input [(ngModel)]="nuevoGasto.nombre" required></ion-input>
-      </ion-item>      
+      </ion-item>
 
       <ion-item>
         <ion-label position="stacked">Monto del Gasto</ion-label>
@@ -36,12 +35,12 @@
           placeholder="dd/mm/aaaa"
         ></ion-input>
       </ion-item>
-      
+
       <ion-item>
         <label for="categoria">Categoría</label>
         <select id="categoria" [(ngModel)]="nuevoGasto.categorias" name="categoria" (change)="onCategoriaChange($event)" required>
           <option *ngFor="let categoria of categorias" [value]="categoria.id">{{ categoria.nombre }}</option>
-        </select>        
+        </select>
       </ion-item>
 
       <ion-item>
@@ -51,7 +50,7 @@
           <option *ngFor="let presupuesto of presupuestos" [value]="presupuesto.id">{{ presupuesto.nombre }}</option>
         </select>
       </ion-item>
-      
+
       <ion-item>
         <ion-label position="stacked">Tipo de Gasto</ion-label>
         <ion-select [(ngModel)]="nuevoGasto.tipo" placeholder="Selecciona tipo">
@@ -59,11 +58,21 @@
           <ion-select-option value="credito">Crédito</ion-select-option>
         </ion-select>
       </ion-item>
-      
+
       <ion-item *ngIf="nuevoGasto.tipo === 'credito'">
         <ion-label position="stacked">Número de Cuotas</ion-label>
         <ion-input [(ngModel)]="nuevoGasto.cuotas" type="number" min="1" placeholder="Ej: 3"></ion-input>
-      </ion-item>      
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Adjuntar Foto de Boleta (opcional)</ion-label>
+        <input type="file" (change)="onFileChange($event)" accept="image/*"/>
+      </ion-item>
+
+      <div *ngIf="archivoUrl">
+        <img [src]="archivoUrl" alt="Boleta seleccionada" width="200" />
+      </div>
+
     </ion-card-content>
   </ion-card>
 

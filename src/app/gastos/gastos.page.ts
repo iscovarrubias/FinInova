@@ -24,9 +24,13 @@ export class GastosPage implements OnInit {
     cuotas: 1,
   };
 
+  archivoBoleta: File | null = null; 
+  archivoUrl: string | null = null; 
+
   categorias: any[] = [];
   presupuestos: any[] = [];
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:4000';
+
 
   constructor(
     private http: HttpClient,
@@ -39,6 +43,19 @@ export class GastosPage implements OnInit {
 
   ngOnInit() {
     this.cargarCategorias();
+  }
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      this.archivoBoleta = file;
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.archivoUrl = e.target.result; 
+        console.log('Archivo seleccionado:', file);
+      };
+      reader.readAsDataURL(file);
+    }
   }
 
   cargarCategorias() {
@@ -66,10 +83,11 @@ export class GastosPage implements OnInit {
       }
     );
   }
+
   onCategoriaChange(event: Event) {
     const selectElement = event.target as HTMLSelectElement;
     const categoriaId = selectElement.value;
-  
+
     this.usuarioService.obtenerPresupuestosPorCategoria(categoriaId).subscribe(
       (presupuestos: any[]) => {
         this.presupuestos = presupuestos;
@@ -79,7 +97,6 @@ export class GastosPage implements OnInit {
       }
     );
   }
-  
 
   async crearGasto() {
     if (!this.nuevoGasto.nombre || !this.nuevoGasto.monto || !this.nuevoGasto.fecha || !this.nuevoGasto.categorias.length) {
@@ -91,10 +108,10 @@ export class GastosPage implements OnInit {
       toast.present();
       return;
     }
-  
+
     const usuario = this.authService.getCurrentUser();
     const correo = usuario ? usuario.correo : this.nuevoGasto.correo;
-  
+
     if (!correo) {
       const toast = await this.toastController.create({
         message: 'Por favor, ingresa un correo válido.',
@@ -104,19 +121,43 @@ export class GastosPage implements OnInit {
       toast.present();
       return;
     }
-  
+
+    if (this.archivoBoleta) {
+      const formData = new FormData();
+      formData.append('boleta', this.archivoBoleta, this.archivoBoleta.name);
+
+      this.http.post<{ filePath: string }>(`${this.apiUrl}/upload`, formData).subscribe(
+        async (response) => {
+          this.nuevoGasto.archivoBoleta = response.filePath; 
+          await this.crearGastosConArchivo();
+        },
+        async (error) => {
+          const toast = await this.toastController.create({
+            message: 'Error al subir la boleta.',
+            duration: 2000,
+            color: 'danger',
+          });
+          toast.present();
+        }
+      );
+    } else {
+      await this.crearGastosConArchivo(); 
+    }
+  }
+
+  async crearGastosConArchivo() {
     const gastos = [];
     if (this.nuevoGasto.tipo === 'debito') {
-      gastos.push({ 
-        ...this.nuevoGasto, 
+      gastos.push({
+        ...this.nuevoGasto,
         categorias: Array.isArray(this.nuevoGasto.categorias)
           ? this.nuevoGasto.categorias
-          : [this.nuevoGasto.categorias] 
+          : [this.nuevoGasto.categorias],
       });
     } else if (this.nuevoGasto.tipo === 'credito') {
       const montoPorCuota = this.nuevoGasto.monto / this.nuevoGasto.cuotas;
       const fechaInicial = new Date(this.nuevoGasto.fecha);
-  
+
       for (let i = 0; i < this.nuevoGasto.cuotas; i++) {
         const fechaCuota = new Date(fechaInicial);
         fechaCuota.setMonth(fechaCuota.getMonth() + i);
@@ -124,15 +165,16 @@ export class GastosPage implements OnInit {
           ...this.nuevoGasto,
           categorias: Array.isArray(this.nuevoGasto.categorias)
             ? this.nuevoGasto.categorias
-            : [this.nuevoGasto.categorias], 
+            : [this.nuevoGasto.categorias],
           monto: montoPorCuota,
           fecha: fechaCuota.toISOString().split('T')[0],
         });
       }
     }
-  
+
     for (const gasto of gastos) {
-      this.usuarioService.crearGasto(usuario.id, gasto, correo).subscribe(
+      const usuario = this.authService.getCurrentUser();
+      this.usuarioService.crearGasto(usuario.id, gasto, usuario.correo).subscribe(
         async (res: any) => {
           const toast = await this.toastController.create({
             message: 'Gasto creado con éxito.',
@@ -151,8 +193,8 @@ export class GastosPage implements OnInit {
         }
       );
     }
-  
-    this.limpiarFormulario(); 
+
+    this.limpiarFormulario();
     this.router.navigate(['/home']);
   }
 
@@ -168,7 +210,10 @@ export class GastosPage implements OnInit {
       tipo: 'debito',
       cuotas: 1,
     };
+    this.archivoBoleta = null;
+    this.archivoUrl = null; 
   }
+
   volverAtras() {
     this.navController.back();
   }

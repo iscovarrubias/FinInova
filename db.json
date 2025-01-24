@@ -105,6 +105,18 @@
       ],
       "compartir": false,
       "correoDestino": null
+    },
+    {
+      "id": "d7f8",
+      "nombre": "Bencina Mensual",
+      "fechaInicio": "2025-01-01",
+      "fechaCorte": "2025-01-31",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "2"
+      ],
+      "compartir": false,
+      "correoDestino": null
     }
   ],
   "categorias": [
@@ -296,7 +308,23 @@
       "presupuesto": "e4db",
       "descripcion": "Operación Ambulatoria",
       "tipo": "debito",
-      "cuotas": 1
+      "cuotas": 1,
+      "archivoBoleta": "/uploads/boleta_5.jpg"
+    },
+    {
+      "id": "2309",
+      "nombre": "Copec",
+      "monto": 1.736,
+      "fecha": "2025-01-31",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "2"
+      ],
+      "presupuesto": "d7f8",
+      "descripcion": "Copec",
+      "tipo": "debito",
+      "cuotas": 1,
+      "archivoBoleta": "/uploads/1737700326622.jpg"
     }
   ]
 }
