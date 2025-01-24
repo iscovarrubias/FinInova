@@ -100,3 +100,21 @@ ion-item select option[disabled] {
   font-size: 14px;
   text-align: center;
 }
+
+ion-toolbar {
+  --background: #b8d0eb; 
+  --border-color: transparent;
+  height: 50px; 
+}
+
+ion-buttons[slot="start"] ion-button {
+  --color: white; 
+  height: 40px; 
+  width: 40px; 
+}
+
+
+ion-icon[name="arrow-back"] {
+  font-size: 26px; 
+}
+

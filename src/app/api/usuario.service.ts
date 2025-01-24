@@ -87,12 +87,12 @@ export class UsuarioService {
       .pipe(
         map(presupuestos => 
           presupuestos.filter(presupuesto => 
-            presupuesto.categorias.includes(categoriaId)
+            presupuesto.categorias.includes(categoriaId) 
           )
         ),
         catchError(this.handleError('obtenerPresupuestosPorCategoria'))
       );
-  }
+  }  
   
   crearGasto(userId: string, gasto: any, correo: string): Observable<any> {
     const gastoConCorreo = { 
@@ -108,6 +108,12 @@ export class UsuarioService {
     return this.http.get<any[]>(`${this.apiUrl}/gastos?correo=${correo}`, this.httpOptions)
       .pipe(catchError(this.handleError('obtenerGastos')));
   }  
+
+  obtenerGastosPorPresupuesto(presupuestoId: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/gastos?presupuesto=${presupuestoId}`, this.httpOptions)
+      .pipe(catchError(this.handleError('obtenerGastosPorPresupuesto')));
+  }
+    
   
   actualizarUsuario(id: number, usuario: any): Observable<any> {
     return this.http.put<any>(`${this.apiUrl}/usuarios/${id}`, usuario, this.httpOptions)

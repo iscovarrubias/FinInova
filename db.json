@@ -59,13 +59,49 @@
       "correoDestino": "a@example.com"
     },
     {
-      "id": "8517",
-      "nombre": "Hola",
-      "fechaInicio": "2025-11-29",
-      "fechaCorte": "2026-02-19",
+      "id": "e300",
+      "nombre": "Remodelación Baño",
+      "fechaInicio": "2025-01-23",
+      "fechaCorte": "2025-03-23",
       "correo": "isabella@gmail.com",
       "categorias": [
         "3"
+      ],
+      "compartir": false,
+      "correoDestino": null
+    },
+    {
+      "id": "bd7f",
+      "nombre": "Viaje Brasil",
+      "fechaInicio": "2025-09-09",
+      "fechaCorte": "2025-12-09",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "compartir": false,
+      "correoDestino": null
+    },
+    {
+      "id": "4fa3",
+      "nombre": "Pasaje Mensual",
+      "fechaInicio": "2025-03-01",
+      "fechaCorte": "2025-04-01",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "2"
+      ],
+      "compartir": false,
+      "correoDestino": null
+    },
+    {
+      "id": "e4db",
+      "nombre": "Operación",
+      "fechaInicio": "2026-08-29",
+      "fechaCorte": "2026-08-30",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "4"
       ],
       "compartir": false,
       "correoDestino": null
@@ -95,19 +131,6 @@
   ],
   "gastos": [
     {
-      "id": "080a",
-      "nombre": "Ropa",
-      "monto": 21400,
-      "fecha": "2024-02-11",
-      "correo": "isabella@gmail.com",
-      "categorias": [
-        "3"
-      ],
-      "descripcion": "Ropa ",
-      "tipo": "debito",
-      "cuotas": 1
-    },
-    {
       "id": "cdf7",
       "nombre": "Super",
       "monto": 30000,
@@ -118,6 +141,160 @@
       ],
       "presupuesto": "98cd",
       "descripcion": "Comida del super jumbo",
+      "tipo": "debito",
+      "cuotas": 1
+    },
+    {
+      "id": "3c9c",
+      "nombre": "Baño",
+      "monto": 100000,
+      "fecha": "2025-01-26",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "presupuesto": "e300",
+      "descripcion": "Remodelación Baño",
+      "tipo": "credito",
+      "cuotas": 3
+    },
+    {
+      "id": "8fe1",
+      "nombre": "Baño",
+      "monto": 100000,
+      "fecha": "2025-02-26",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "presupuesto": "e300",
+      "descripcion": "Remodelación Baño",
+      "tipo": "credito",
+      "cuotas": 3
+    },
+    {
+      "id": "3267",
+      "nombre": "Baño",
+      "monto": 100000,
+      "fecha": "2025-03-26",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "3"
+      ],
+      "presupuesto": "e300",
+      "descripcion": "Remodelación Baño",
+      "tipo": "credito",
+      "cuotas": 3
+    },
+    {
+      "id": "8d87",
+      "nombre": "Viaje",
+      "monto": 166666.66666666666,
+      "fecha": "2025-09-10",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "presupuesto": "bd7f",
+      "descripcion": "Viaje a Brasil",
+      "tipo": "credito",
+      "cuotas": 6
+    },
+    {
+      "id": "1a01",
+      "nombre": "Viaje",
+      "monto": 166666.66666666666,
+      "fecha": "2025-11-10",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "presupuesto": "bd7f",
+      "descripcion": "Viaje a Brasil",
+      "tipo": "credito",
+      "cuotas": 6
+    },
+    {
+      "id": "dbc9",
+      "nombre": "Viaje",
+      "monto": 166666.66666666666,
+      "fecha": "2025-10-10",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "presupuesto": "bd7f",
+      "descripcion": "Viaje a Brasil",
+      "tipo": "credito",
+      "cuotas": 6
+    },
+    {
+      "id": "6e75",
+      "nombre": "Viaje",
+      "monto": 166666.66666666666,
+      "fecha": "2025-12-10",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "presupuesto": "bd7f",
+      "descripcion": "Viaje a Brasil",
+      "tipo": "credito",
+      "cuotas": 6
+    },
+    {
+      "id": "b7cb",
+      "nombre": "Viaje",
+      "monto": 166666.66666666666,
+      "fecha": "2026-01-10",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "presupuesto": "bd7f",
+      "descripcion": "Viaje a Brasil",
+      "tipo": "credito",
+      "cuotas": 6
+    },
+    {
+      "id": "1143",
+      "nombre": "Viaje",
+      "monto": 166666.66666666666,
+      "fecha": "2026-02-10",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "5"
+      ],
+      "presupuesto": "bd7f",
+      "descripcion": "Viaje a Brasil",
+      "tipo": "credito",
+      "cuotas": 6
+    },
+    {
+      "id": "5693",
+      "nombre": "Pasajes",
+      "monto": 40000,
+      "fecha": "2025-04-01",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "2"
+      ],
+      "presupuesto": "4fa3",
+      "descripcion": "Pasajes Del Mes",
+      "tipo": "debito",
+      "cuotas": 1
+    },
+    {
+      "id": "c1a0",
+      "nombre": "Operación",
+      "monto": 850000,
+      "fecha": "2026-08-30",
+      "correo": "isabella@gmail.com",
+      "categorias": [
+        "4"
+      ],
+      "presupuesto": "e4db",
+      "descripcion": "Operación Ambulatoria",
       "tipo": "debito",
       "cuotas": 1
     }

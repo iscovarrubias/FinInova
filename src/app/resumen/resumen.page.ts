@@ -1,19 +1,39 @@
 import { Component, OnInit } from '@angular/core';
 import { UsuarioService } from '../api/usuario.service';
 import { AuthService } from '../api/auth.service';
+import { ToastController } from '@ionic/angular';  
 import { Chart, ArcElement, CategoryScale, LinearScale, Title, Tooltip, Legend, DoughnutController } from 'chart.js';
-import ChartDataLabels from 'chartjs-plugin-datalabels';  
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import { NavController } from '@ionic/angular'; 
 
-Chart.register(ArcElement, CategoryScale, LinearScale, Title, Tooltip, Legend, DoughnutController, ChartDataLabels); 
+Chart.register(ArcElement, CategoryScale, LinearScale, Title, Tooltip, Legend, DoughnutController, ChartDataLabels);
 
 interface Categoria {
   id: number;
   nombre: string;
 }
 
+interface Presupuesto {
+  id: string;
+  nombre: string;
+  descripcion: string;
+  fechaInicio: string;
+  fechaCorte: string;
+  correo: string;
+  categorias: number[];
+  compartir: boolean;
+  correoDestino: string | null;
+}
+
 interface Gasto {
   monto: number;
+  nombre: string;
   categorias: number[];
+  presupuesto: string; 
+  descripcion: string;
+  fecha: string;
+  tipo: string;
+  cuotas: number;
 }
 
 @Component({
@@ -23,67 +43,142 @@ interface Gasto {
 })
 export class ResumenPage implements OnInit {
 
-  categories: Categoria[] = [];
-  expenses: Gasto[] = [];
-  percentages: string[] = []; 
-  description: string = 'Resumen de tus gastos por categoría';
-  chart: any;
+  categorias: Categoria[] = [];
+  gastos: Gasto[] = [];
+  presupuestos: Presupuesto[] = [];
+  presupuestosFiltrados: Presupuesto[] = [];
+  porcentajes: string[] = [];
+  descripcion: string = 'Resumen de tus gastos por categoría';
+  grafico: any;
+  consultaBusqueda: string = '';
+  categoriaSeleccionada: number | null = null;
+  currentDate: string = '';
 
-  constructor(private usuarioService: UsuarioService, private authService: AuthService) {}
+  constructor(private usuarioService: UsuarioService, private authService: AuthService, private toastController: ToastController, private navController: NavController ) {}
 
   ngOnInit() {
-    this.loadData();
+
+    const date = new Date();
+    this.currentDate = date.toLocaleString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' });
+
+    this.cargarDatos();
   }
 
-  loadData() {
+  cargarDatos() {
     this.usuarioService.obtenerCategorias().subscribe({
       next: (data: Categoria[]) => {
-        this.categories = data;
-        this.updateChart();
+        this.categorias = data;
+        this.actualizarGrafico();
       },
-      error: (err) => {
+      error: async (err) => {
         console.error('Error al obtener las categorías:', err);
+        const toast = await this.toastController.create({
+          message: 'Error al cargar las categorías.',
+          duration: 2000,
+          color: 'danger',
+        });
+        toast.present();
       }
     });
 
-    const currentUser = this.authService.getCurrentUser();
-    this.usuarioService.obtenerGastos(currentUser.correo).subscribe({
+    const usuarioActual = this.authService.getCurrentUser();
+    this.usuarioService.obtenerGastos(usuarioActual.correo).subscribe({
       next: (data: Gasto[]) => {
-        this.expenses = data;
-        this.updateChart();
+        console.log('Gastos:', data);
+        this.gastos = data;
+        this.actualizarGrafico();
       },
-      error: (err) => {
+      error: async (err) => {
         console.error('Error al obtener los gastos:', err);
+        const toast = await this.toastController.create({
+          message: 'Error al cargar los gastos.',
+          duration: 2000,
+          color: 'danger',
+        });
+        toast.present();
+      }
+    });
+
+    this.usuarioService.obtenerPresupuestos(usuarioActual.correo).subscribe({
+      next: (data: Presupuesto[]) => {
+        console.log('Presupuestos:', data);
+        this.presupuestos = data;
+        this.presupuestosFiltrados = data;
+      },
+      error: async (err) => {
+        console.error('Error al obtener los presupuestos:', err);
+        const toast = await this.toastController.create({
+          message: 'Error al cargar los presupuestos.',
+          duration: 2000,
+          color: 'danger',
+        });
+        toast.present();
       }
     });
   }
 
-  updateChart() {
-    if (this.categories.length > 0 && this.expenses.length > 0) {
-      const categoryAmounts = this.categories.map(cat => 
-        this.expenses.filter(exp => exp.categorias.includes(cat.id)).reduce((acc, exp) => acc + exp.monto, 0)
+  obtenerDescripcionGasto(presupuestoId: string): string {
+    const gasto = this.gastos.find(gasto => gasto.presupuesto === presupuestoId);
+    return gasto ? gasto.descripcion : 'Descripción no disponible';
+  }
+
+  obtenerGastoPorId(presupuestoId: string): Gasto | undefined {
+    return this.gastos.find(gasto => gasto.presupuesto === presupuestoId);
+  }
+
+  obtenerMontoTotal(categorias: number[]): number {
+    const gastosUnicos = new Set();
+  
+    return this.gastos
+      .filter(exp => categorias.some(id => exp.categorias.includes(id)))
+      .reduce((acc, exp) => {
+        if (!gastosUnicos.has(exp.nombre + exp.fecha)) {
+          gastosUnicos.add(exp.nombre + exp.fecha);
+          return acc + exp.monto;
+        }
+        return acc;
+      }, 0);
+  }  
+  
+  obtenerCuotas(presupuestoId: string): number {
+    const gasto = this.gastos.find(gasto => gasto.presupuesto === presupuestoId);
+    return gasto ? gasto.cuotas : 0; 
+  }
+
+  actualizarGrafico() {
+    if (this.categorias.length > 0 && this.gastos.length > 0) {
+      const montosPorCategoria = this.categorias.map(cat =>
+        this.gastos.filter(exp => exp.categorias.includes(cat.id)).reduce((acc, exp) => {
+          return acc + exp.monto;
+        }, 0)
       );
 
-      const validCategories = this.categories.filter((cat, index) => categoryAmounts[index] > 0);
-      const validCategoryAmounts = categoryAmounts.filter(amount => amount > 0);
-      
-      const totalAmount = validCategoryAmounts.reduce((acc, amount) => acc + amount, 0);
-      
-      this.percentages = validCategoryAmounts.map(amount => ((amount / totalAmount) * 100).toFixed(2));
+      const categoriasValidas = this.categorias.filter((cat, index) => montosPorCategoria[index] > 0);
+      const montosValidos = montosPorCategoria.filter(monto => monto > 0);
 
-      if (this.chart) {
-        this.chart.data.labels = validCategories.map(cat => cat.nombre);
-        this.chart.data.datasets[0].data = validCategoryAmounts;
-        this.chart.update();
+      const montoTotal = montosValidos.reduce((acc, monto) => acc + monto, 0);
+
+      this.porcentajes = montosValidos.map(monto => ((monto / montoTotal) * 100).toFixed(2));
+
+      if (this.grafico) {
+        this.grafico.data.labels = categoriasValidas.map(cat => cat.nombre);
+        this.grafico.data.datasets[0].data = montosValidos;
+        this.grafico.update();
       } else {
-        this.chart = new Chart('myChart', {
+        this.grafico = new Chart('miGrafico', {
           type: 'doughnut',
           data: {
-            labels: validCategories.map(cat => cat.nombre),
+            labels: categoriasValidas.map(cat => cat.nombre),
             datasets: [{
               label: 'Montos por Categoría',
-              data: validCategoryAmounts,
-              backgroundColor: ['#ff89d2', '#ff58ab', '#ff1c3e', '#ffb1e4', '#ff6f76'],
+              data: montosValidos,
+              backgroundColor: [
+                '#CDB4DB', 
+                '#FFC8DD',
+                '#FFAFCC', 
+                '#BDE0FE',
+                '#A2D2FF'  
+              ],
               borderColor: '#ffffff',
               borderWidth: 2
             }]
@@ -102,11 +197,11 @@ export class ResumenPage implements OnInit {
                 color: '#fff',
                 font: {
                   weight: 'bold',
-                  size: 16,
+                  size: 20,
                 },
                 formatter: (value, context) => {
-                  const percentage = this.percentages[context.dataIndex]; 
-                  return `${percentage}%`; 
+                  const porcentaje = this.porcentajes[context.dataIndex];
+                  return `${porcentaje}%`;
                 }
               }
             }
@@ -114,5 +209,46 @@ export class ResumenPage implements OnInit {
         });
       }
     }
+  }
+
+  filtrarDatos() {
+    if (this.consultaBusqueda.trim() === '') {
+      this.presupuestosFiltrados = this.presupuestos;
+    } else {
+      this.presupuestosFiltrados = this.presupuestos.filter(presupuesto => {
+        const nombreCategoria = this.categorias.find(cat => cat.id === presupuesto.categorias[0])?.nombre || '';
+        const nombrePresupuesto = presupuesto.nombre || '';
+
+        const match = nombreCategoria.toLowerCase().includes(this.consultaBusqueda.toLowerCase()) ||
+                       nombrePresupuesto.toLowerCase().includes(this.consultaBusqueda.toLowerCase());
+
+        console.log(`Filtrando: ${nombrePresupuesto} - match: ${match}`);
+        return match;
+      });
+    }
+  }
+
+  filtrarPorCategoria() {
+    if (this.categoriaSeleccionada !== null) {
+      this.presupuestosFiltrados = this.presupuestos.filter(presupuesto =>
+        presupuesto.categorias.includes(this.categoriaSeleccionada as number)
+      );
+    } else {
+      this.presupuestosFiltrados = this.presupuestos;
+    }
+  }
+
+  obtenerNombresCategorias(categorias: number[]): string {
+    return categorias.map(id => this.categorias.find(cat => cat.id === id)?.nombre).join(', ');
+  }
+
+  limpiarFiltros() {
+    this.consultaBusqueda = '';
+    this.categoriaSeleccionada = null;
+    this.presupuestosFiltrados = [...this.presupuestos]; 
+  }
+
+  volverAtras() {
+    this.navController.back();
   }
 }

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { UsuarioService } from '../api/usuario.service';  
 import { AuthService } from '../api/auth.service';  
+import { NavController } from '@ionic/angular'; 
 
 @Component({
   selector: 'app-presupuesto',
@@ -30,7 +31,8 @@ export class PresupuestoPage implements OnInit {
     private router: Router,
     private toastController: ToastController,
     private usuarioService: UsuarioService, 
-    private authService: AuthService  
+    private authService: AuthService,
+    private navController: NavController
   ) {}
 
   ngOnInit() {
@@ -168,5 +170,9 @@ export class PresupuestoPage implements OnInit {
       categorias: [],  
       compartir: false,
     };
+  }
+
+  volverAtras() {
+    this.navController.back();
   }
 }

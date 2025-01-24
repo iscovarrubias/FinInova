@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { UsuarioService } from '../api/usuario.service';
 import { AuthService } from '../api/auth.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-gastos',
@@ -32,7 +33,8 @@ export class GastosPage implements OnInit {
     private router: Router,
     private toastController: ToastController,
     private usuarioService: UsuarioService,
-    private authService: AuthService
+    private authService: AuthService,
+    private navController: NavController
   ) {}
 
   ngOnInit() {
@@ -166,5 +168,8 @@ export class GastosPage implements OnInit {
       tipo: 'debito',
       cuotas: 1,
     };
+  }
+  volverAtras() {
+    this.navController.back();
   }
 }

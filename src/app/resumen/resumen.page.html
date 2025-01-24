@@ -1,21 +1,64 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>Resumen de Gastos</ion-title>
+
+<ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="volverAtras()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
-</ion-header>
+
 
 <ion-content>
+  <div class="date">
+    <p>{{ currentDate }}</p>
+  </div>
+
+  <h4>TUS PRESUPUESTOS Y GASTOS</h4>
+
   <div class="chart-container">
-    <canvas id="myChart"></canvas>
+    <canvas id="miGrafico"></canvas>
   </div>
 
-  <div class="description">
-    <p>{{ description }}</p>
-  </div>
+  <ion-searchbar 
+    [(ngModel)]="consultaBusqueda" 
+    (ionInput)="filtrarDatos()" 
+    placeholder="Buscar presupuesto...">
+  </ion-searchbar>
 
-  <div class="percentages" *ngIf="categories.length > 0 && percentages.length > 0">
-    <div *ngFor="let percentage of percentages; let i = index" class="percentage-bubble">
-      <p>{{ categories[i]?.nombre }}: {{ percentage }}%</p>
-    </div>
-  </div>
+  <ion-select 
+    [(ngModel)]="categoriaSeleccionada" 
+    (ionChange)="filtrarPorCategoria()" 
+    placeholder=" FILTRAR POR CATEGORÍAS ">
+    <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.id">
+      {{ categoria.nombre }}
+    </ion-select-option>
+  </ion-select>
+
+  <ion-button 
+    fill="outline" 
+    color="pink" 
+    size="small" 
+    (click)="limpiarFiltros()">
+    Limpiar Filtros
+  </ion-button>
+
+    <ion-card *ngFor="let presupuesto of presupuestosFiltrados">
+      <ion-card-title class="presupuesto-title">{{ presupuesto.nombre }}</ion-card-title>
+      <ion-card-content>
+        <p>Fecha de inicio: {{ presupuesto.fechaInicio | date: 'dd/MM/yyyy' }}</p>
+        <p>Fecha de corte: {{ presupuesto.fechaCorte | date: 'dd/MM/yyyy' }}</p>
+      </ion-card-content>
+
+      <ion-card-title class="detalle-gasto-title">Detalle del Gasto</ion-card-title>
+      <ion-card-content>
+        <p>Nombre del gasto: {{ obtenerGastoPorId(presupuesto.id)?.nombre }}</p>
+        <p>Fecha: {{ obtenerGastoPorId(presupuesto.id)?.fecha | date: 'dd/MM/yyyy' }}</p>
+        <p>Descripción del gasto: {{ obtenerDescripcionGasto(presupuesto.id) }}</p>
+        <p>Gasto: {{ obtenerMontoTotal(presupuesto.categorias) | number: '1.0-0' }} CLP</p>
+        <p>Tipo de pago: {{ obtenerGastoPorId(presupuesto.id)?.tipo }}</p>   
+        <p *ngIf="obtenerGastoPorId(presupuesto.id)?.tipo !== 'Débito'">Cuotas: {{ obtenerCuotas(presupuesto.id) }}</p>
+        <p>Categoría: {{ obtenerNombresCategorias(presupuesto.categorias) }}</p>
+
+      </ion-card-content>
+    </ion-card>
 </ion-content>
