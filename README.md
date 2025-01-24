@@ -2,17 +2,19 @@
 
 ➤ Pasos para ejecutar:
 
+Instalación
 1 - npm install 
-
 2 - npm install json-server
-
 3 - npm install chart.js
-
 4 - npm install chartjs-plugin-datalabels --save
+5 - npm install express
+6 - npm install multer
+7 - npm install cors
 
-5 - npx json-server db.json
-
-6 - ionic serve
+Levantar Servidores/App
+1 - npx json-server db.json
+2 - node server.js
+3 - ionic serve
 
 ➤ Versiones:
 
